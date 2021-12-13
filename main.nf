@@ -46,7 +46,7 @@ process fastqc {
         }
 
     input:
-    set val(sampleId), file(read1), file(read2)
+    tuple val(sampleId), file(read1), file(read2)
 
     output:
     file "*.{zip,html}"
