@@ -11,8 +11,7 @@ Channel
     .fromPath(params.sampleId)
     .splitCsv(header:true, sep: ",")
     .map{ row-> tuple(row.sampleId, file(row.read1, checkIfExists: true), file(row.read2, checkIfExists: true)) }
-    .into { samples_fastqc_ch;
-           samples_trim_ch }
+    .set { samples_ch }
 
 Channel
     .fromPath( params.gtf )
