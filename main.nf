@@ -131,5 +131,6 @@ process alignment {
 workflow {
     fastqc(samples_ch)
     trimming(samples_ch)
-    trimming.out.samples_trimmed.view()
+    // trimming.out.samples_trimmed.view()
+    alignment(index_ch, trimming.out.samples_trimmed)
 }
