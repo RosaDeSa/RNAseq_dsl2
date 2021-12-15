@@ -189,8 +189,8 @@ process multiqc {
     publishDir "${params.outdir}/multiqc", mode: 'copy'
 	
     input:
-    file ("*.{zip,html}")
-    file ('*_fastqc.{zip,html}')
+    file ("*.zip")
+    file ('*_fastqc.zip')
     file ('*.txt')
     path ('*.{flagstat,idxstats,stats}')
     path ('*.summary')
