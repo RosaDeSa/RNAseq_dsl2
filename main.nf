@@ -82,7 +82,7 @@ process trimming {
     tuple val(sampleId), file(read1), file(read2)
 
     output:
-    tuple val(sampleId), path('*.fq.gz'), emit: samples_trimmed
+    tuple val(sampleId), file('*.fq.gz'), emit: samples_trimmed
     file '*_fastqc.{zip,html}'
     file '*.txt'
     
