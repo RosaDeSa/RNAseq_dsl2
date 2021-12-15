@@ -107,7 +107,6 @@ process alignment {
     publishDir "$params.outdir", mode: 'copy'
 
     input:
-    path index
     tuple val(sampleId), file(reads)
     
     output:
@@ -116,7 +115,7 @@ process alignment {
     script:
     """
     STAR --runMode alignReads \
-	--genomeDir ${index} \
+	--genomeDir params.index \
 	--outSAMtype BAM SortedByCoordinate \
 	--readFilesIn ${reads} \
 	--runThreadN 16 \
