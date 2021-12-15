@@ -46,7 +46,7 @@ process fastqc {
         }
 
     input:
-    tuple val(sampleId), file(read1), file(read2)
+    set val(sampleId), file(read1), file(read2)
 
     output:
     file "*.{zip,html}"
@@ -81,7 +81,7 @@ process trimming {
     set val(sampleId), file(read1), file(read2)
 
     output:
-    tuple val(sampleId), path('*.fq.gz')
+    set val(sampleId), path('*.fq.gz')
     file '*_fastqc.{zip,html}'
     file '*.txt'
     
