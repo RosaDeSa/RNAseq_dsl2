@@ -119,7 +119,7 @@ process alignment {
     STAR --runMode alignReads \
 	--genomeDir ${index} \
 	--outSAMtype BAM SortedByCoordinate \
-	--readFilesIn $read1,$read1 $read2,$read2 \
+	--readFilesIn $read1 $read2 \
 	--runThreadN 16 \
 	--outFileNamePrefix mapped/${sampleId}_ \
 	--outFilterMultimapNmax 1 \
