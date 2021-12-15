@@ -133,5 +133,5 @@ index_ch.view()
 workflow {
     fastqc(samples_ch)
     trimming(samples_ch)
-    alignment(index_ch, trimming.out.samples_trimmed)
+    alignment(params.index, trimming.out.samples_trimmed)
 }
