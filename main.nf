@@ -83,7 +83,7 @@ process trimming {
     tuple val(sampleId), file(read1), file(read2)
 
     output:
-    set val(sampleId), path('*.fq.gz')
+    tuple val(sampleId), path('*.fq.gz')
     file '*_fastqc.{zip,html}'
     file '*.txt'
     
