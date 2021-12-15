@@ -108,7 +108,6 @@ process alignment {
     publishDir "$params.outdir", mode: 'copy'
 
     input:
-    path index
     tuple val(sampleId), path(read1), path(read2)
     
     output:
@@ -117,7 +116,7 @@ process alignment {
     script:
     """
     STAR --runMode alignReads \
-	--genomeDir ${index} \
+	--genomeDir index_ch \
 	--outSAMtype BAM SortedByCoordinate \
 	--readFilesIn $read1 $read2 \
 	--runThreadN 16 \
@@ -133,5 +132,5 @@ index_ch.view()
 workflow {
     fastqc(samples_ch)
     trimming(samples_ch)
-    trimming.out.samples_trimmed.view()
+    alignment(trimming.out.samples_trimmed)
 }
