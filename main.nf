@@ -115,7 +115,7 @@ process alignment {
     script:
     """
     STAR --runMode alignReads \
-	--genomeDir index_ch \
+	--genomeDir $params.index \
 	--outSAMtype BAM SortedByCoordinate \
 	--readFilesIn ${reads} \
 	--runThreadN 16 \
