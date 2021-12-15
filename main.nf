@@ -108,7 +108,7 @@ process alignment {
     publishDir "$params.outdir", mode: 'copy'
 
     input:
-    path(index) from index_ch
+    index_ch
     tuple val(sampleId), path(read1), path(read2)
     
     output:
