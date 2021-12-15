@@ -108,7 +108,7 @@ process alignment {
     publishDir "$params.outdir", mode: 'copy'
 
     input:
-    file(index)
+    params.index
     tuple val(sampleId), path(read1), path(read2)
     
     output:
@@ -132,5 +132,5 @@ process alignment {
 workflow {
     fastqc(samples_ch)
     trimming(samples_ch)
-    alignment(index_ch.collect(), trimming.out.samples_trimmed)
+    alignment(trimming.out.samples_trimmed)
 }
