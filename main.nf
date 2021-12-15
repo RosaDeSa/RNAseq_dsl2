@@ -143,7 +143,7 @@ process samtools {
     
     output:
     tuple val(sampleId), file('*.bai')
-    path '*.{flagstat,idxstats,stats}', emit: for_mqc
+    path '*.{flagstat,idxstats,stats}', emit: stats_for_mqc
     
     script:
     """
@@ -154,6 +154,28 @@ process samtools {
     """
 }
 
+/*
+ * Step 5. Generate count table
+ */
+ 
+process countTable {
+    tag "Generate count table"
+    cpus 8
+    publishDir params.outdir, mode: 'copy'
+    
+    input:
+    tuple val(sampleId), file(bam)
+    
+    output:
+    path '*count.out'
+    path '*.summary', emit: count_for_mqc
+    
+    
+    script:
+    """
+    featureCounts -t exon -a $params.gtf -o ${sampleId}.count.out -T 8 ${bam}
+    """
+}
 
 workflow {
     fastqc(samples_ch)
@@ -161,4 +183,6 @@ workflow {
     // trimming.out.samples_trimmed.view()
     alignment(trimming.out.samples_trimmed)
     samtools(alignment.out)
+    countTable(alignment.out)
+    
 }
