@@ -213,6 +213,6 @@ workflow {
     alignment(trimming.out.samples_trimmed)
     samtools(alignment.out)
     countTable(alignment.out)
-    // multiqc(fastqc.out.fastqc_for_mqc, trimming.out.post_trimqc_reports, trimming.out.post_trimqc_results, samtools.out.stats_for_mqc, countTable.out.count_for_mqc)
-    multiqc(fastqc.out, trimming.out, samtools.out, countTable.out)
+    multiqc(fastqc.out.fastqc_for_mqc, trimming.out.post_trimqc_reports, trimming.out.post_trimqc_results, samtools.out.stats_for_mqc, countTable.out.count_for_mqc)
+    // multiqc(fastqc.out, trimming.out, samtools.out, countTable.out)
 }
