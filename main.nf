@@ -28,7 +28,6 @@ Channel
     .ifEmpty { error "Cannot find any annotation matching: ${params.index}" }
     .set { index_ch }
 
-samples_ch.view()
 
 /*
  * Step 1. Create fastqc for reads
@@ -128,7 +127,6 @@ process alignment {
     """
 }
 
-index_ch.view()
 
 workflow {
     fastqc(samples_ch)
