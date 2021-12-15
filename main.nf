@@ -59,3 +59,7 @@ process fastqc {
     fastqc $read2 
     """
 }
+
+workflow {
+    fastqc(samples_ch)
+    }
