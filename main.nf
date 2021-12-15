@@ -192,8 +192,8 @@ process multiqc {
     file ("*.zip")
     file ('*_fastqc.zip')
     file ('*.txt')
-    path ('*.{flagstat,idxstats,stats}')
-    path ('*.summary')
+    file ('*.{flagstat,idxstats,stats}')
+    file ('*.summary')
     
     
     output:
