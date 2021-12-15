@@ -133,5 +133,5 @@ index_ch.view()
 workflow {
     fastqc(samples_ch)
     trimming(samples_ch)
-    trimming.out.samples_trimmedù.view()
+    trimming.out.samples_trimmed.view()
 }
