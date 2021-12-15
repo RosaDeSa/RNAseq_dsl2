@@ -108,7 +108,8 @@ process alignment {
     publishDir "$params.outdir", mode: 'copy'
 
     input:
-    tuple val(sampleId), file(read1), file(read2)
+    path index
+    tuple val(sampleId), file(read)
     
     output:
     tuple val(sampleId), file('mapped/*.bam')  
@@ -116,9 +117,9 @@ process alignment {
     script:
     """
     STAR --runMode alignReads \
-	--genomeDir index_ch \
+	--genomeDir ${index} \
 	--outSAMtype BAM SortedByCoordinate \
-	--readFilesIn $read1 $read2 \
+	--readFilesIn ${read[0]} ${read[1]} \
 	--runThreadN 16 \
 	--outFileNamePrefix mapped/${sampleId}_ \
 	--outFilterMultimapNmax 1 \
@@ -132,5 +133,5 @@ index_ch.view()
 workflow {
     fastqc(samples_ch)
     trimming(samples_ch)
-    alignment(trimming.out.samples_trimmed)
+    alignment(index_ch, trimming.out.samples_trimmed)
 }
