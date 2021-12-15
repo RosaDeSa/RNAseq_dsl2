@@ -50,7 +50,7 @@ process fastqc {
     tuple val(sampleId), file(read1), file(read2)
 
     output:
-    file "*.{zip,html}"
+    file "*.{zip,html}", emit: fastqc_for_mqc
 
     script:
     """
@@ -83,8 +83,8 @@ process trimming {
 
     output:
     tuple val(sampleId), file('*.fq.gz'), emit: samples_trimmed
-    file '*_fastqc.{zip,html}'
-    file '*.txt'
+    file '*_fastqc.{zip,html}', emit: post_trimqc_reports
+    file '*.txt', emit: post_trimqc_results
     
     script:
     """
@@ -161,6 +161,7 @@ process samtools {
 process countTable {
     tag "Generate count table"
     cpus 8
+    executor 'slurm'
     publishDir params.outdir, mode: 'copy'
     
     input:
@@ -177,6 +178,34 @@ process countTable {
     """
 }
 
+/*
+ * Step 6. Multiqc
+ */
+
+process multiqc {
+    tag "Generate MultiQC"
+    cpus 8
+    executor 'slurm'
+    publishDir "${params.outdir}/multiqc", mode: 'copy'
+	
+    input:
+    file ('fastqc/*')
+    file ('postTrimQC/*')
+    file ('trimming/*') 
+    path ('*.flagstat,idxstats,stats') 
+    path ('*.summary') 
+    
+    
+    output:
+    file("multiqc_posttrim_report.html")
+    file("multiqc_posttrim_report_data")
+    
+    script:
+    """
+    multiqc . -n multiqc_posttrim_report.html
+    """
+}
+
 workflow {
     fastqc(samples_ch)
     trimming(samples_ch)
@@ -184,5 +213,6 @@ workflow {
     alignment(trimming.out.samples_trimmed)
     samtools(alignment.out)
     countTable(alignment.out)
-    
+    // multiqc(fastqc.out.fastqc_for_mqc, trimming.out.post_trimqc_reports, trimming.out.post_trimqc_results, samtools.out.stats_for_mqc, countTable.out.count_for_mqc)
+    multiqc(fastqc.out, trimming.out, samtools.out, countTable.out)
 }
