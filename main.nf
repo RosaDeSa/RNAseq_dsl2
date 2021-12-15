@@ -108,7 +108,7 @@ process alignment {
 
     input:
     path index
-    tuple val(sampleId), file(read)
+    tuple val(sampleId), file(reads)
     
     output:
     tuple val(sampleId), file('mapped/*.bam')  
@@ -118,7 +118,7 @@ process alignment {
     STAR --runMode alignReads \
 	--genomeDir ${index} \
 	--outSAMtype BAM SortedByCoordinate \
-	--readFilesIn ${read[0]} ${read[1]} \
+	--readFilesIn ${reads} \
 	--runThreadN 16 \
 	--outFileNamePrefix mapped/${sampleId}_ \
 	--outFilterMultimapNmax 1 \
