@@ -95,7 +95,42 @@ process trimming {
     """
 }
 
+/*
+ * Step 3. Alignment reads to human index genome
+ */
+
+process alignment {
+    echo true
+    tag "Align Reads"
+    cpus 16
+    executor 'slurm'
+    memory '35GB'
+    publishDir "$params.outdir", mode: 'copy'
+
+    input:
+    path index from index_ch
+    tuple val(sampleId), path(read1), path(read2)
+    
+    output:
+    tuple val(sampleId), file('mapped/*.bam')  
+    
+    script:
+    """
+    STAR --runMode alignReads \
+	--genomeDir ${index} \
+	--outSAMtype BAM SortedByCoordinate \
+	--readFilesIn $read1,$read1 $read2,$read2 \
+	--runThreadN 16 \
+	--outFileNamePrefix mapped/${sampleId}_ \
+	--outFilterMultimapNmax 1 \
+	--twopassMode Basic \
+        --readFilesCommand zcat 
+    """
+}
+
+
 workflow {
     fastqc(samples_ch)
     trimming(samples_ch)
+    alignment(trimming.out)
     }
