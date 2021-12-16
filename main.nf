@@ -216,7 +216,7 @@ workflow {
     samtools(alignment.out[0])
     countTable(alignment.out[0])
     multiqc(fastqc.out.collect(),
-    	trimming.out.[1].collect(),
+    	trimming.out[1].collect(),
 	trimming.out[2].collect(),
 	alignment.out[1].collect(),
 	// samtools.out[1].collect(),
