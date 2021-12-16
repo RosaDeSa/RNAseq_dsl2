@@ -7,7 +7,7 @@ process trimming {
     cpus 4
     executor 'slurm'
     echo true
-    memory '10GB'
+    memory '1GB'
     publishDir "$params.outdir" , mode: 'copy',
     saveAs: {filename ->
     	   if (filename.indexOf(".html") > 0) "postTrimQC/$filename"
