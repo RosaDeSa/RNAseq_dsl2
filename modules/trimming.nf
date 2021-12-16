@@ -4,7 +4,7 @@
 
 process trimming {
     tag "Trim Galore"
-    cpus 16
+    cpus 4
     executor 'slurm'
     echo true
     memory '10GB'
