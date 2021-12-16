@@ -54,8 +54,10 @@ process fastqc {
 
     script:
     """
-    fastqc $read1 
-    fastqc $read2 
+    ln -s $read1 ${sampleId}_1.fastq.gz
+    ln -s $read2 ${sampleId}_2.fastq.gz
+    fastqc ${sampleId}_1.fastq.gz
+    fastqc ${sampleId}_2.fastq.gz
     """
 }
 
@@ -110,7 +112,7 @@ process alignment {
     tuple val(sampleId), file(reads)
     
     output:
-    tuple val(sampleId), file('mapped/*.bam')  
+    tuple val(sampleId), file('mapped/*.bam'), file('*.final.out')
     
     script:
     """
