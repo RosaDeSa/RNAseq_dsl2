@@ -6,6 +6,12 @@ params.sampleId = ""
 
 // 1.2 input file from config file
 Channel
+    .fromPath( params.sampleId )
+    .splitCsv(header:true, sep: ",")
+    .map{ row-> tuple(row.sampleId, file(row.read1, checkIfExists: true), file(row.read2, checkIfExists: true)) }
+    .set { samples_ch }
+
+Channel
     .fromPath( params.gtf )
     .ifEmpty { error "Cannot find any annotation matching: ${params.gtf}" }
     .set { annot_ch }
@@ -30,12 +36,6 @@ include { multiqc } from './modules/multiqc'
 
 // workflow
 workflow {
-    take:
-     samples = Channel
-                    .fromPath( params.sampleId )
-                    .splitCsv(header:true, sep: ",")
-                    .map{ row-> tuple(row.sampleId, file(row.read1, checkIfExists: true), file(row.read2, checkIfExists: true)) }
-    
     main:
     fastqc(samples)
     trimming(samples)
