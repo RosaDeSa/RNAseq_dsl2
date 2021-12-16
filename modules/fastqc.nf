@@ -4,7 +4,7 @@
 
 process fastqc {
     echo true
-    cpus 2
+    cpus 1
     tag 'Fastqc'
     executor 'slurm'
     publishDir "$params.outdir" , mode: 'copy',
