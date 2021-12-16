@@ -112,7 +112,8 @@ process alignment {
     tuple val(sampleId), file(reads)
     
     output:
-    tuple val(sampleId), file('mapped/*.bam'), file('*.final.out')
+    tuple val(sampleId), file('mapped/*.bam')
+    file('*.final.out')
     
     script:
     """
@@ -219,6 +220,7 @@ workflow {
     multiqc(fastqc.out.collect(),
     	trimming.out[1].collect(),
 	trimming.out[2].collect(),
-	samtools.out[1].collect(),
+	alignment.out[1].collect(),
+	// samtools.out[1].collect(),
 	countTable.out[1].collect())
 }
