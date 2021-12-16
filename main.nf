@@ -37,8 +37,8 @@ include { multiqc } from './modules/multiqc'
 // workflow
 workflow {
     main:
-    fastqc(samples)
-    trimming(samples)
+    fastqc(samples_ch)
+    trimming(samples_ch)
     alignment(trimming.out.samples_trimmed)
     samtools(alignment.out[0])
     countTable(alignment.out[0])
