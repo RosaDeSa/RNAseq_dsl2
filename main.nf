@@ -41,7 +41,7 @@ process fastqc {
     publishDir "$params.outdir" , mode: 'copy',
         saveAs: {filename ->
                  if (filename.indexOf("zip") > 0)     "fastqc/zips/$filename"
-            else if (filename.indexOf("html") > 0)    "fastqc/${sampleId}_${filename}"
+            else if (filename.indexOf("html") > 0)    "fastqc/${filename}"
             else if (filename.indexOf("txt") > 0)     "fastqc_stats/$filename"
             else null            
         }
