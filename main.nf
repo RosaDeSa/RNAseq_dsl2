@@ -113,7 +113,7 @@ process alignment {
     
     output:
     tuple val(sampleId), file('mapped/*.bam')
-    file('*.final.out')
+    file('mapped/*.final.out')
     
     script:
     """
