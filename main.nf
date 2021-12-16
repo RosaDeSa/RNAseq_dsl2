@@ -73,10 +73,10 @@ process trimming {
     memory '10GB'
     publishDir "$params.outdir" , mode: 'copy',
     saveAs: {filename ->
-    	   if (filename.indexOf("_trimmed_fastqc.html") > 0) "postTrimQC/$filename"
-      else if (filename.indexOf("_trimmed_fastqc.zip") > 0) "postTrimQC/zip/$filename"
+    	   if (filename.indexOf(".html") > 0) "postTrimQC/$filename"
+      else if (filename.indexOf(".zip") > 0) "postTrimQC/zip/$filename"
       else if (filename.indexOf(".txt") > 0) "trimming/logs/$filename"
-      else if (filename.indexOf("_trimmed.fq.gz")) "trimming/trimmed_fastq/$filename"
+      else if (filename.indexOf(".fq.gz")) "trimming/trimmed_fastq/$filename"
       else null
 	}
     
