@@ -4,7 +4,7 @@
  
 process countTable {
     tag "Generate count table"
-    cpus 8
+    cpus 4
     executor 'slurm'
     publishDir params.outdir, mode: 'copy'
     
