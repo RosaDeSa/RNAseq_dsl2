@@ -31,7 +31,7 @@ include { fastqc } from './modules/fastqc'
 include { trimming } from './modules/trimming'
 include { alignment } from './modules/alignment'
 include { samtools } from './modules/samtools'
-inclide { countTable } from './modules/countTable'
+include { countTable } from './modules/countTable'
 include { multiqc } from './modules/multiqc'
 
 // workflow
