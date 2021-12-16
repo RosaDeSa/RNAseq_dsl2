@@ -29,7 +29,7 @@ Channel
     .set { index_ch }
 
 
-include { fasqtqc } from './moules/fastqc.nf'
+include { fasqtqc } from './modules/fastqc.nf'
 
 /*
  * Step 2. Trimming
