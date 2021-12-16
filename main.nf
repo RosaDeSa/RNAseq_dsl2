@@ -218,7 +218,7 @@ workflow {
     countTable(alignment.out[0])
     // multiqc(fastqc.out.fastqc_for_mqc, trimming.out.post_trimqc_reports, trimming.out.post_trimqc_results, samtools.out.stats_for_mqc, countTable.out.count_for_mqc)
     multiqc(fastqc.out.collect(),
-    	trimming.out.samples_trimmed.collect(),
+    	trimming.out.[1].collect(),
 	trimming.out[2].collect(),
 	alignment.out[1].collect(),
 	// samtools.out[1].collect(),
