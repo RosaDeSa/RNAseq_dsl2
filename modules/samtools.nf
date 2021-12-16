@@ -4,9 +4,9 @@
 
 process samtools {
     echo true
-    cpus 16
+    cpus 3
     executor 'slurm'
-    memory '35GB'
+    memory '5GB'
     tag "Samtools"
     publishDir "$params.outdir", mode: 'copy'
     
