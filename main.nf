@@ -195,7 +195,7 @@ process multiqc {
     file ('fastqc/*')
     file ('postTrimQC/*')
     file ('trimming/*')
-    path ('*.flagstat,idxstats,stats')
+    path ('mapped/*')
     path ('*.summary')
     
     
