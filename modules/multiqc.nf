@@ -4,7 +4,7 @@
 
 process multiqc {
     tag "Generate MultiQC"
-    cpus 8
+    cpus 1
     executor 'slurm'
     publishDir "${params.outdir}/multiqc", mode: 'copy'
 	
