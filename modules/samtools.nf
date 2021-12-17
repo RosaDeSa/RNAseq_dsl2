@@ -4,7 +4,7 @@
 
 process samtools {
     echo true
-    cpus 3
+    cpus 2
     executor 'slurm'
     memory '5GB'
     tag "Samtools"
