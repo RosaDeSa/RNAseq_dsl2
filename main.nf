@@ -27,6 +27,7 @@ Channel
     .set { index_ch }
 
 // 2 load script from modules
+include { buildIndex } from './modules/buildIndex'
 include { fastqc } from './modules/fastqc'
 include { trimming } from './modules/trimming'
 include { alignment } from './modules/alignment'
@@ -34,7 +35,7 @@ include { samtools } from './modules/samtools'
 include { countTable } from './modules/countTable'
 include { multiqc } from './modules/multiqc'
 
-// workflow
+// 3 workflow
 workflow {
     main:
     fastqc(samples_ch)
