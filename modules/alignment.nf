@@ -5,7 +5,7 @@
 process alignment {
     echo true
     tag "Align Reads"
-    cpus 10
+    cpus 8
     executor 'slurm'
     memory '35GB'
     publishDir "$params.outdir", mode: 'copy'
@@ -23,7 +23,7 @@ process alignment {
 	--genomeDir $params.index \
 	--outSAMtype BAM SortedByCoordinate \
 	--readFilesIn ${reads} \
-	--runThreadN 9 \
+	--runThreadN 7 \
 	--outFileNamePrefix mapped/${sampleId}_ \
 	--outFilterMultimapNmax 1 \
 	--twopassMode Basic \
