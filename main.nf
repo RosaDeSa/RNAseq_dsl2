@@ -20,14 +20,14 @@ log.info """\
  """
 
 //include section
-include { s_fastqc } from './modules/single_end/s_fastqc'
-include { s_trimming } from './modules/single_end/s_trimming'
-include { p_fastqc } from './modules/paired_end/p_fastqc'
-include { p_trimming } from './modules/paired_end/p_trimming'
-include { alignment } from './modules/alignment'
-include { samtools } from './modules/samtools'
-include { countTable } from './modules/countTable'
-include { multiqc } from './modules/multiqc'
+include { s_fastqc } from 'modules/single_end/s_fastqc'
+include { s_trimming } from 'modules/single_end/s_trimming'
+include { p_fastqc } from 'modules/paired_end/p_fastqc'
+include { p_trimming } from 'modules/paired_end/p_trimming'
+include { alignment } from 'modules/alignment'
+include { samtools } from 'modules/samtools'
+include { countTable } from 'modules/countTable'
+include { multiqc } from 'modules/multiqc'
 
 //channel
 reads = Channel.from( params.reads )
