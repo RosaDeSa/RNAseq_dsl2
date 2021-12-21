@@ -45,7 +45,7 @@ workflow single_end {
    
    emit:
     bam = alignment.out[0]
-    final = alignment.out[1]
+    mapped = alignment.out[1]
     }
            
 workflow paired_end {
@@ -59,7 +59,7 @@ workflow paired_end {
     
    emit:
     bam = alignment.out[0]
-    final = alignment.out[1]
+    mapped = alignment.out[1]
    }
 
 workflow {
