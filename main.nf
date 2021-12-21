@@ -23,7 +23,7 @@ log.info """\
 include { alignment;
           samtools;
           countTable;
-          multiqc } from './modules'
+          multiqc } from './modules/'
 
 include { s_fastqc;
           s_trimming } from './modules/single_end'
