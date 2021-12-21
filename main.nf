@@ -58,8 +58,8 @@ workflow paired_end {
     alignment(p_trimming.out.samples_trimmed)
     
    emit:
-    bam = alignment.out[0]
-    mapped = alignment.out[1]
+    bam_ch = alignment.out[0]
+    mapped_ch = alignment.out[1]
    }
 
 workflow {
