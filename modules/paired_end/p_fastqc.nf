@@ -4,6 +4,7 @@
 
 process p_fastqc {
     tag 'Fastqc'
+    label 'fastqc'
     publishDir "$params.outdir" , mode: 'copy',
         saveAs: {filename ->
                  if (filename.indexOf("zip") > 0)     "fastqc/zips/$filename"
