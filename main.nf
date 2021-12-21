@@ -23,7 +23,7 @@ log.info """\
 include { alignment;
           samtools;
           countTable;
-          multiqc } from './modules/'
+          multiqc } from './modules/sub_modules'
 
 include { s_fastqc;
           s_trimming } from './modules/single_end'
@@ -39,29 +39,11 @@ reads = Channel.from( params.reads )
 workflow single_end {
     s_fastqc(reads)
     s_trimming(reads)
-    alignment(trimming.out.samples_trimmed)
-    samtools(alignment.out[0])
-    countTable(alignment.out[0])
-    multiqc(fastqc.out,
-            trimming.out[1],
-            trimming.out[2],
-            alignment.out[1],
-            countTable.out[1]
-           )
     }
            
 workflow paired_end {
     p_fastqc(reads)
     p_trimming(reads)
-    alignment(trimming.out.samples_trimmed)
-    samtools(alignment.out[0])
-    countTable(alignment.out[0])
-    multiqc(fastqc.out.collect(),
-            trimming.out[1].collect(),
-            trimming.out[2].collect(),
-            alignment.out[1].collect(),
-            countTable.out[1].collect()
-           )
    }
 
 workflow {
@@ -70,6 +52,15 @@ workflow {
   } else {
    paired_end()
   }
+  alignment(trimming.out.samples_trimmed)
+  samtools(alignment.out[0])
+  countTable(alignment.out[0])
+  multiqc(fastqc.out.collect(),
+            trimming.out[1].collect(),
+            trimming.out[2].collect(),
+            alignment.out[1].collect(),
+            countTable.out[1].collect()
+           )
 }
 
 workflow.onComplete {
