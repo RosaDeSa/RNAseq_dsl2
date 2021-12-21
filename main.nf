@@ -19,49 +19,25 @@ log.info """\
  outdir       : ${params.outdir}
  """
 
-//include section
-include { s_fastqc } from './modules/single_end/s_fastqc.nf'
-include { s_trimming } from './modules/single_end/s_trimming.nf'
-include { p_fastqc } from './modules/paired_end/p_fastqc.nf'
-include { p_trimming } from './modules/paired_end/p_trimming.nf'
-include { alignment } from './modules/alignment.nf'
-include { samtools } from './modules/samtools.nf'
-include { countTable } from './modules/countTable.nf'
-include { multiqc } from './modules/multiqc.nf'
-include { foo } from './modules/foo.nf'
+//include section for modules
+include { s_fastqc } from './modules/single_end/s_fastqc'
+include { s_trimming } from './modules/single_end/s_trimming'
+include { p_fastqc } from './modules/paired_end/p_fastqc'
+include { p_trimming } from './modules/paired_end/p_trimming'
+include { alignment } from './modules/alignment'
+include { samtools } from './modules/samtools'
+include { countTable } from './modules/countTable'
+include { multiqc } from './modules/multiqc'
+include { foo } from './modules/foo'
+
+//include section for workflows
+include { single_end } from './workflow/single_end'
+include { paired_end } from './workflow/paired_end'
 
 //channel
 reads = Channel.from( params.reads )
 
 //workflow
-workflow single_end {
-   take:
-    reads
-   
-   main:
-    s_fastqc(reads)
-    s_trimming(reads)
-    alignment(s_trimming.out.samples_trimmed)
-   
-   emit:
-    bam = alignment.out[0]
-    mapped = alignment.out[1]
-    }
-           
-workflow paired_end {
-   take:
-    reads
-   
-   main:
-    p_fastqc(reads)
-    p_trimming(reads)
-    alignment(p_trimming.out.samples_trimmed)
-    
-   emit:
-    bam = alignment.out[0]
-    mapped = alignment.out[1]
-   }
-
 workflow {
  if (params.single_end) {
   single_end(reads)
