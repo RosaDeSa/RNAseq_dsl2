@@ -48,6 +48,7 @@ workflow single_end {
             alignment.out[1],
             countTable.out[1]
            )
+    }
            
 workflow paired_end {
     p_fastqc(reads)
@@ -61,6 +62,7 @@ workflow paired_end {
             alignment.out[1].collect(),
             countTable.out[1].collect()
            )
+   }
 
 workflow {
  if (params.single_end) {
