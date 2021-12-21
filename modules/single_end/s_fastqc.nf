@@ -2,7 +2,7 @@
  * Step 1. Create fastqc for reads
  */
 
-process fastqc {
+process s_fastqc {
     tag 'Fastqc'
     publishDir "$params.outdir" , mode: 'copy',
         saveAs: {filename ->
