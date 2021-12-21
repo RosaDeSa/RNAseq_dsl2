@@ -23,5 +23,5 @@ workflow paired_end {
            )
     
    emit:
-    multiqc_r = multiqc.out
+    multiqc_r = multiqc.out[0]
    }
