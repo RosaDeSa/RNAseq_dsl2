@@ -41,10 +41,26 @@ reads = Channel.from( params.reads )
 workflow {
  if (params.single_end) {
    single_end(reads)
-   foo(single_end.bam.out)
+   foo(single_end.out.bam)
+   samtools(single_end.out.bam)
+   countTable(single_end.out.bam)
+   multiqc(fastqc.out.collect(),
+            trimming.out[1].collect(),
+            trimming.out[2].collect(),
+            alignment.out[1].collect(),
+            countTable.out[1].collect()
+           )
   } else {
    paired_end(reads)
    foo(paired_end.out.bam)
+   samtools(paired_end.out.bam)
+   countTable(paired_end.out.bam)
+   multiqc(fastqc.out.collect(),
+            trimming.out[1].collect(),
+            trimming.out[2].collect(),
+            alignment.out[1].collect(),
+            countTable.out[1].collect()
+           )
   }
 }
 
