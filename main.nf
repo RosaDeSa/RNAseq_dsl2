@@ -35,10 +35,8 @@ reads = Channel.from( params.reads )
 workflow {
  if (params.single_end) {
    single_end(reads)
-   foo(single_end.out.multiqc_r)
   } else {
    paired_end(reads)
-   foo(paired_end.out.multiqc_r)
   }
 }
 
