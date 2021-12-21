@@ -29,6 +29,9 @@ gtf:
 
 genome:
  /home/tigem/g.martone/human_dsl2/fasta/genome.fa
+
+single_end:
+ false
 ```
 
 ### Tips
