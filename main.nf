@@ -68,7 +68,7 @@ workflow {
   } else {
    paired_end(reads)
   }
- foo(bam)
+ foo(bam.out)
 }
 
 workflow.onComplete {
