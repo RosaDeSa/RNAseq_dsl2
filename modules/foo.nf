@@ -2,10 +2,10 @@ process foo {
  echo true
   
  input:
- tuple val(sample_id), file('mapped/*.bam')
+ file(multiqc)
  
  script:
  """
- echo --sample_id $sample_id
+ echo --multiqc $multiqc
  """
  }
