@@ -20,29 +20,58 @@ log.info """\
  """
 
 //include section
-include { fastqc } from './modules/fastqc'
-include { trimming } from './modules/trimming'
-include { alignment } from './modules/alignment'
-include { samtools } from './modules/samtools'
-include { countTable } from './modules/countTable'
-include { multiqc } from './modules/multiqc'
+
+include { s_fastqc;
+          s_trimming;
+          s_alignment;
+          s_samtools;
+          s_countTable;
+          s_multiqc } from './modules/single_end'
+
+include { p_fastqc;
+          p_trimming;
+          p_alignment;
+          p_samtools;
+          p_countTable;
+          p_multiqc } from './modules/paired_end'
+          
 
 //channel
 reads = Channel.from( params.reads )
 
 //workflow
-workflow {
-    fastqc(reads)
-    trimming(reads)
-    alignment(trimming.out.samples_trimmed)
-    samtools(alignment.out[0])
-    countTable(alignment.out[0])
-    multiqc(fastqc.out.collect(),
+workflow single_end {
+    s_fastqc(reads)
+    s_trimming(reads)
+    s_alignment(trimming.out.samples_trimmed)
+    s_samtools(alignment.out[0])
+    s_countTable(alignment.out[0])
+    s_multiqc(fastqc.out,
+            trimming.out[1],
+            trimming.out[2],
+            alignment.out[1],
+            countTable.out[1]
+           )
+           
+workflow paired_end {
+    p_fastqc(reads)
+    p_trimming(reads)
+    p_alignment(trimming.out.samples_trimmed)
+    p_samtools(alignment.out[0])
+    p_countTable(alignment.out[0])
+    p_multiqc(fastqc.out.collect(),
             trimming.out[1].collect(),
             trimming.out[2].collect(),
             alignment.out[1].collect(),
             countTable.out[1].collect()
            )
+
+workflow {
+ if (params.single_end) {
+  single_end()
+  } else {
+   paired_end()
+  }
 }
 
 workflow.onComplete {
