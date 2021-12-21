@@ -28,6 +28,7 @@ include { alignment } from './modules/alignment.nf'
 include { samtools } from './modules/samtools.nf'
 include { countTable } from './modules/countTable.nf'
 include { multiqc } from './modules/multiqc.nf'
+include { foo } from './modules/foo.nf
 
 //channel
 reads = Channel.from( params.reads )
@@ -51,14 +52,7 @@ workflow {
   } else {
    paired_end()
   }
-  samtools(alignment.out[0])
-  countTable(alignment.out[0])
-  multiqc(fastqc.out.collect(),
-            trimming.out[1].collect(),
-            trimming.out[2].collect(),
-            alignment.out[1].collect(),
-            countTable.out[1].collect()
-           )
+ foo(alignment.out[0].collect()
 }
 
 workflow.onComplete {
