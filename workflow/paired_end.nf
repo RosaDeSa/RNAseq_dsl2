@@ -8,6 +8,7 @@ workflow paired_end {
     alignment(p_trimming.out.samples_trimmed)
     
    emit:
-    bam = alignment.out[0]
-    mapped = alignment.out[1]
+    fastqc_r = p_fastqc.out
+    trimming_r = p_trimming.out
+    bam = alignment.out
    }
