@@ -44,7 +44,8 @@ workflow single_end {
     alignment(s_trimming.out.samples_trimmed)
    
    emit:
-    alignment.out
+    bam = alignment.out[0]
+    final = alignment.out[1]
     }
            
 workflow paired_end {
@@ -57,7 +58,8 @@ workflow paired_end {
     alignment(p_trimming.out.samples_trimmed)
     
    emit:
-    alignment.out
+    bam = alignment.out[0]
+    final = alignment.out[1]
    }
 
 workflow {
@@ -66,7 +68,7 @@ workflow {
   } else {
    paired_end(reads)
   }
- foo(alignment.out[0])
+ foo(bam)
 }
 
 workflow.onComplete {
