@@ -3,24 +3,21 @@
  */
 
 process samtools {
-    echo true
-    cpus 2
-    executor 'slurm'
     tag "Samtools"
-    publishDir "$params.outdir", mode: 'copy'
+    publishDir "${params.outdir}/alignment", mode: 'copy'
     
     input:
-    tuple val(sampleId), file(bam)
+    tuple val(sample_id), file(bam)
     
     output:
-    tuple val(sampleId), file('*.bai')
+    tuple val(sample_id), file('*.bai')
     path '*.{flagstat,idxstats,stats}'
     
     script:
     """
-    samtools index $bam > ${sampleId}.sorted.bam
-    samtools flagstat $bam > ${sampleId}.sorted.bam.flagstat
-    samtools idxstats $bam > ${sampleId}.sorted.bam.idxstats
-    samtools stats $bam > ${sampleId}.sorted.bam.stats
+    samtools index $bam > ${sample_id}.sorted.bam
+    samtools flagstat $bam > ${sample_id}.sorted.bam.flagstat
+    samtools idxstats $bam > ${sample_id}.sorted.bam.idxstats
+    samtools stats $bam > ${sample_id}.sorted.bam.stats
     """
 }
