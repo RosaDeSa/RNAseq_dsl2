@@ -62,9 +62,9 @@ workflow paired_end {
 
 workflow {
  if (params.single_end) {
-  single_end()
+  single_end(reads)
   } else {
-   paired_end()
+   paired_end(reads)
   }
  foo(alignment.out[0])
 }
