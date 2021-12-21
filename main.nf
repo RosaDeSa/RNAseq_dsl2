@@ -39,7 +39,7 @@ workflow single_end {
     reads
    
    emit:
-    alignment.out
+    align = alignment.out
    
    main:
     s_fastqc(reads)
@@ -52,7 +52,7 @@ workflow paired_end {
     reads
    
    emit:
-    alignment.out
+    align = alignment.out
    
    main:
     p_fastqc(reads)
@@ -66,7 +66,7 @@ workflow {
   } else {
    paired_end(reads)
   }
- foo(alignment.out[0])
+ foo(align[0])
 }
 
 workflow.onComplete {
