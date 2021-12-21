@@ -28,7 +28,7 @@ include { alignment } from './modules/alignment.nf'
 include { samtools } from './modules/samtools.nf'
 include { countTable } from './modules/countTable.nf'
 include { multiqc } from './modules/multiqc.nf'
-include { foo } from './modules/foo.nf
+include { foo } from './modules/foo.nf'
 
 //channel
 reads = Channel.from( params.reads )
