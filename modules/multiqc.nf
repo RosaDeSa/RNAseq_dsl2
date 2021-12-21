@@ -4,10 +4,8 @@
 
 process multiqc {
     tag "Generate MultiQC"
-    cpus 1
-    executor 'slurm'
     publishDir "${params.outdir}/multiqc", mode: 'copy'
-	
+
     input:
     file ('fastqc/*')
     file ('postTrimQC/*')
