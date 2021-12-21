@@ -4,12 +4,10 @@
  
 process countTable {
     tag "Generate count table"
-    cpus 3
-    executor 'slurm'
-    publishDir params.outdir, mode: 'copy'
+    publishDir "${params.outdir}/countTable", mode: 'copy'
     
     input:
-    tuple val(sampleId), file(bam)
+    tuple val(sample_id), file(bam)
     
     output:
     path '*count.out'
@@ -18,6 +16,6 @@ process countTable {
     
     script:
     """
-    featureCounts -t exon -a $params.gtf -o ${sampleId}.count.out -T 8 ${bam}
+    featureCounts -t exon -a $params.gtf -o ${sample_id}.count.out -T 8 ${bam}
     """
 }

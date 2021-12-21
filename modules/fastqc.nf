@@ -3,10 +3,7 @@
  */
 
 process fastqc {
-    echo true
-    cpus 1
     tag 'Fastqc'
-    executor 'slurm'
     publishDir "$params.outdir" , mode: 'copy',
         saveAs: {filename ->
                  if (filename.indexOf("zip") > 0)     "fastqc/zips/$filename"
@@ -16,16 +13,16 @@ process fastqc {
         }
 
     input:
-    tuple val(sampleId), file(read1), file(read2)
+    tuple val(sample_id), path(reads)
 
     output:
-    file "*.{zip,html}"
+    file  "*.{zip,html}"
 
     script:
     """
-    ln -s $read1 ${sampleId}_1.fastq.gz
-    ln -s $read2 ${sampleId}_2.fastq.gz
-    fastqc ${sampleId}_1.fastq.gz
-    fastqc ${sampleId}_2.fastq.gz
+    ln -s ${reads[0]} ${sample_id}_1.fastq.gz
+    ln -s ${reads[1]} ${sample_id}_2.fastq.gz
+    fastqc ${sample_id}_1.fastq.gz
+    fastqc ${sample_id}_2.fastq.gz
     """
 }

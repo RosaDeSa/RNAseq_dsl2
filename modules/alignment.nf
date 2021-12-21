@@ -3,30 +3,26 @@
  */
 
 process alignment {
-    echo true
     tag "Align Reads"
-    cpus 8
-    executor 'slurm'
-    memory '35GB'
     publishDir "$params.outdir", mode: 'copy'
 
     input:
-    tuple val(sampleId), file(reads)
+    tuple val(sample_id), file(reads)
     
     output:
-    tuple val(sampleId), file('mapped/*.bam')
+    tuple val(sample_id), file('mapped/*.bam')
     file('mapped/*.final.out')
     
     script:
     """
     STAR --runMode alignReads \
-	--genomeDir $params.index \
-	--outSAMtype BAM SortedByCoordinate \
-	--readFilesIn ${reads} \
-	--runThreadN 7 \
-	--outFileNamePrefix mapped/${sampleId}_ \
-	--outFilterMultimapNmax 1 \
-	--twopassMode Basic \
+        --genomeDir $params.index \
+        --outSAMtype BAM SortedByCoordinate \
+        --readFilesIn ${reads} \
+        --runThreadN 7 \
+        --outFileNamePrefix mapped/${sample_id}_ \
+        --outFilterMultimapNmax 1 \
+        --twopassMode Basic \
         --readFilesCommand zcat 
     """
 }
