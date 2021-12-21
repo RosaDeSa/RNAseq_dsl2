@@ -22,9 +22,6 @@ log.info """\
 //include section for modules
 include { s_fastqc } from './modules/single_end/s_fastqc.nf'
 include { s_trimming } from './modules/single_end/s_trimming.nf'
-include { samtools } from './modules/samtools.nf'
-include { countTable } from './modules/countTable.nf'
-include { multiqc } from './modules/multiqc.nf'
 include { foo } from './modules/foo.nf'
 
 //include section for workflows
@@ -38,10 +35,10 @@ reads = Channel.from( params.reads )
 workflow {
  if (params.single_end) {
    single_end(reads)
-   foo(single_end.out.bam)
+   foo(single_end.out.multiqc_r)
   } else {
    paired_end(reads)
-   foo(paired_end.out.bam[0])
+   foo(paired_end.out.multiqc_r)
   }
 }
 
