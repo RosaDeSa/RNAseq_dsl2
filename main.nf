@@ -36,11 +36,13 @@ reads = Channel.from( params.reads )
 workflow single_end {
     s_fastqc(reads)
     s_trimming(reads)
+    alignment(s_trimming.out.samples_trimmed)
     }
            
 workflow paired_end {
     p_fastqc(reads)
     p_trimming(reads)
+    alignment(p_trimming.out.samples_trimmed)
    }
 
 workflow {
@@ -49,7 +51,6 @@ workflow {
   } else {
    paired_end()
   }
-  alignment(trimming.out.samples_trimmed)
   samtools(alignment.out[0])
   countTable(alignment.out[0])
   multiqc(fastqc.out.collect(),
