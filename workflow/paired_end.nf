@@ -1,6 +1,9 @@
 include { p_fastqc } from './../modules/paired_end/p_fastqc.nf'
 include { p_trimming } from './../modules/paired_end/p_trimming.nf'
 include { alignment } from './../modules/alignment.nf'
+include { samtools } from './modules/samtools.nf'
+include { countTable } from './modules/countTable.nf'
+include { multiqc } from './modules/multiqc.nf'
 
 workflow paired_end {
    take:
@@ -10,9 +13,15 @@ workflow paired_end {
     p_fastqc(reads)
     p_trimming(reads)
     alignment(p_trimming.out.samples_trimmed)
+    samtools(alignment.out[0])
+    countTable(alignment.out[0])
+    multiqc(fastqc.out.collect(),
+            trimming.out[1].collect(),
+            trimming.out[2].collect(),
+            alignment.out[1].collect(),
+            countTable.out[1].collect()
+           )
     
    emit:
-    fastqc_r = p_fastqc.out
-    trimming_r = p_trimming.out
-    bam = alignment.out
+    multiqc_r = multiqc.out
    }
