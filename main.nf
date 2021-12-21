@@ -20,20 +20,16 @@ log.info """\
  """
 
 //include section
+include { alignment;
+          samtools;
+          countTable;
+          multiqc } from './modules
 
 include { s_fastqc;
-          s_trimming;
-          s_alignment;
-          s_samtools;
-          s_countTable;
-          s_multiqc } from './modules/single_end'
+          s_trimming } from './modules/single_end'
 
 include { p_fastqc;
-          p_trimming;
-          p_alignment;
-          p_samtools;
-          p_countTable;
-          p_multiqc } from './modules/paired_end'
+          p_trimming } from './modules/paired_end'
           
 
 //channel
