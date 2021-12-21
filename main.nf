@@ -38,26 +38,26 @@ workflow single_end {
    take:
     reads
    
-   emit:
-    align = alignment.out
-   
    main:
     s_fastqc(reads)
     s_trimming(reads)
     alignment(s_trimming.out.samples_trimmed)
+   
+   emit:
+    alignment.out
     }
            
 workflow paired_end {
    take:
     reads
    
-   emit:
-    align = alignment.out
-   
    main:
     p_fastqc(reads)
     p_trimming(reads)
     alignment(p_trimming.out.samples_trimmed)
+    
+   emit:
+    alignment.out
    }
 
 workflow {
@@ -66,7 +66,7 @@ workflow {
   } else {
    paired_end(reads)
   }
- foo(align[0])
+ foo(alignment.out[0])
 }
 
 workflow.onComplete {
