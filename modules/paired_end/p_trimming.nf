@@ -3,7 +3,8 @@
  */
 
 process p_trimming {
-    tag "Trim Galore"
+    tag 'Trim Galore'
+    label 'trimming'
     publishDir "$params.outdir" , mode: 'copy',
     saveAs: {filename ->
            if (filename.indexOf(".html") > 0) "postTrimQC/$filename"
