@@ -15,9 +15,9 @@ workflow paired_end {
     alignment(p_trimming.out.samples_trimmed)
     samtools(alignment.out[0])
     countTable(alignment.out[0])
-    multiqc(fastqc.out.collect(),
-            trimming.out[1].collect(),
-            trimming.out[2].collect(),
+    multiqc(p_fastqc.out.collect(),
+            p_trimming.out[1].collect(),
+            p_trimming.out[2].collect(),
             alignment.out[1].collect(),
             countTable.out[1].collect()
            )
