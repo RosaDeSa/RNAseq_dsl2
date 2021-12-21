@@ -52,7 +52,7 @@ workflow {
   } else {
    paired_end()
   }
- foo(alignment.out[0]
+ foo(alignment.out[0])
 }
 
 workflow.onComplete {
