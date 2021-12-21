@@ -44,15 +44,7 @@ workflow {
    foo(single_end.out.bam)
   } else {
    paired_end(reads)
-   foo(paired_end.out.bam)
-   samtools(paired_end.out.bam)
-   countTable(paired_end.out.bam)
-   multiqc(p_fastqc.out.collect(),
-            p_trimming.out[1].collect(),
-            p_trimming.out[2].collect(),
-            alignment.out[1].collect(),
-            countTable.out[1].collect()
-           )
+   foo(paired_end.out.bam[0])
   }
 }
 
