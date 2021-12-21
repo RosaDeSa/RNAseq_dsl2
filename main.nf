@@ -19,11 +19,6 @@ log.info """\
  outdir       : ${params.outdir}
  """
 
-//include section for modules
-include { s_fastqc } from './modules/single_end/s_fastqc.nf'
-include { s_trimming } from './modules/single_end/s_trimming.nf'
-include { foo } from './modules/foo.nf'
-
 //include section for workflows
 include { single_end } from './workflow/single_end.nf'
 include { paired_end } from './workflow/paired_end.nf'
