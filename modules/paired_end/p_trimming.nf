@@ -2,8 +2,9 @@
  * Step 2. Trimming
  */
 
-process trimming {
-    tag "Trim Galore"
+process p_trimming {
+    tag 'Trim Galore'
+    label 'trimming'
     publishDir "$params.outdir" , mode: 'copy',
     saveAs: {filename ->
            if (filename.indexOf(".html") > 0) "postTrimQC/$filename"

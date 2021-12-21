@@ -29,6 +29,9 @@ gtf:
 
 genome:
  /home/tigem/g.martone/human_dsl2/fasta/genome.fa
+
+single_end:
+ false
 ```
 
 ### Tips
@@ -46,7 +49,7 @@ To run this pipeline on my machine, i used this command line
 
 ```bash
 nextflow run DevPeppe/human_dsl2 \
-		 -r paired-end \
+		 -r main \
 		 -params-file reads.yml
 ```
 

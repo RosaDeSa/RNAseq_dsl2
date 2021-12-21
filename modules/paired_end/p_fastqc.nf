@@ -2,8 +2,9 @@
  * Step 1. Create fastqc for reads
  */
 
-process fastqc {
+process p_fastqc {
     tag 'Fastqc'
+    label 'fastqc'
     publishDir "$params.outdir" , mode: 'copy',
         saveAs: {filename ->
                  if (filename.indexOf("zip") > 0)     "fastqc/zips/$filename"

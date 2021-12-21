@@ -19,30 +19,20 @@ log.info """\
  outdir       : ${params.outdir}
  """
 
-//include section
-include { fastqc } from './modules/fastqc'
-include { trimming } from './modules/trimming'
-include { alignment } from './modules/alignment'
-include { samtools } from './modules/samtools'
-include { countTable } from './modules/countTable'
-include { multiqc } from './modules/multiqc'
+//include section for workflows
+include { single_end } from './workflow/single_end.nf'
+include { paired_end } from './workflow/paired_end.nf'
 
 //channel
 reads = Channel.from( params.reads )
 
 //workflow
 workflow {
-    fastqc(reads)
-    trimming(reads)
-    alignment(trimming.out.samples_trimmed)
-    samtools(alignment.out[0])
-    countTable(alignment.out[0])
-    multiqc(fastqc.out.collect(),
-            trimming.out[1].collect(),
-            trimming.out[2].collect(),
-            alignment.out[1].collect(),
-            countTable.out[1].collect()
-           )
+ if (params.single_end) {
+   single_end(reads)
+  } else {
+   paired_end(reads)
+  }
 }
 
 workflow.onComplete {
