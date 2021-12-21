@@ -1,5 +1,6 @@
 include { p_fastqc } from './../modules/paired_end/p_fastqc.nf'
 include { p_trimming } from './../modules/paired_end/p_trimming.nf'
+include { alignment } from './../modules/alignment.nf'
 
 workflow paired_end {
    take:
