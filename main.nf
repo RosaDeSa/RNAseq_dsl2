@@ -35,12 +35,26 @@ reads = Channel.from( params.reads )
 
 //workflow
 workflow single_end {
+   take:
+    reads
+   
+   emit:
+    alignment.out
+   
+   main:
     s_fastqc(reads)
     s_trimming(reads)
     alignment(s_trimming.out.samples_trimmed)
     }
            
 workflow paired_end {
+   take:
+    reads
+   
+   emit:
+    alignment.out
+   
+   main:
     p_fastqc(reads)
     p_trimming(reads)
     alignment(p_trimming.out.samples_trimmed)
