@@ -15,6 +15,6 @@ echo true
     
     script:
     """
-    samtools index ${bam} ${sample_id}_s_index.bam
+    samtools index ${bam}
     """
 }
