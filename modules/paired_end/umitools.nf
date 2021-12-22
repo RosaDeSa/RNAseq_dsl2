@@ -6,7 +6,7 @@ process umitools {
   tuple val(sample_id), path(reads)
   
   output:
-  tuple val(sample_id), path('*fastq.gz)
+  tuple val(sample_id), path('*fastq.gz')
   
   script:
   """
