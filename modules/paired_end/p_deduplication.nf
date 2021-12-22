@@ -1,5 +1,6 @@
-process deduplication {
+process p_deduplication {
  tag 'Deduplication'
+ label 'deduplication'
  
  input:
  tuple val(sample_id), file(sorted_bam)
