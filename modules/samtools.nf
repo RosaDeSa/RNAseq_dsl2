@@ -15,7 +15,7 @@ process samtools {
     
     script:
     """
-    samtools sort $bam -o ${sample_id}_sorted.bam.bai
+    samtools sort $bam -o ${sample_id}_sorted.bam
     samtools index ${sample_id}_sorted.bam.bai > ${sample_id}_index_sorted.bam
     """
 }
