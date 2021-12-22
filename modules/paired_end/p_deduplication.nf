@@ -1,7 +1,7 @@
 process p_deduplication {
- echo true
  tag 'Deduplication'
  label 'deduplication'
+ publishDir "${params.outdir}/deduplication"
  
  input:
  tuple val(sample_id), file(sorted_bai)
@@ -11,6 +11,6 @@ process p_deduplication {
  
  script:
  """
- echo $sorted_bai
+ umi_tools dedup -I ${sorted_bai} --output-stats=${sample_id}_deduplicated -S ${sample_id}_deduplicated.bam
  """
 }
