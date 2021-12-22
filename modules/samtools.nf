@@ -10,12 +10,10 @@ process samtools {
     tuple val(sample_id), file(bam)
     
     output:
-    tuple val(sample_id), file('*.bai')
     tuple val(sample_id), file('*index.bam')
     
     script:
     """
-    samtools sort ${bam} > ${sample_id}_sorted.bam
-    samtools index ${sample_id}_sorted.bam > ${sample_id}_s_index.bam
+    samtools index ${bam} > ${sample_id}_s_index.bam
     """
 }
