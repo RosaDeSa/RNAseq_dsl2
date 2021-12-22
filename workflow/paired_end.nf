@@ -4,7 +4,7 @@ include { umitools } from './../modules/paired_end/umitools.nf'
 include { p_trimming } from './../modules/paired_end/p_trimming.nf'
 include { alignment } from './../modules/alignment.nf'
 include { samtools } from './../modules/samtools.nf'
-include { p_deduplicaton } from './../modules/paired_end/p_deduplication.nf'
+include { p_deduplication } from './../modules/paired_end/p_deduplication.nf'
 include { countTable } from './../modules/countTable.nf'
 include { multiqc } from './../modules/multiqc.nf'
 
