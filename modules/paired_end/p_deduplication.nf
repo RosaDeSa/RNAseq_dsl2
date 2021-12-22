@@ -3,13 +3,13 @@ process p_deduplication {
  label 'deduplication'
  
  input:
- tuple val(sample_id), file(sorted_bam)
+ tuple val(sample_id), file(sorted_bai)
  
  output:
  tuple val(sample_id), file(ded_bam)
  
  script:
  """
- umi_tools dedup -I $sorted_bam --output-stats=${sample_id}_deduplicated -S ${sample_id}_deduplicated.bam
+ umi_tools dedup -I $sorted_bai --output-stats=${sample_id}_deduplicated -S ${sample_id}_deduplicated.bam
  """
 }
