@@ -13,6 +13,6 @@ process umitools {
   umi_tools extract \
    --stdin=${reads[0]} \
    --bc-pattern=$params.pattern \
-   --stdout ${sammple_id}_processed.fastq.gz
+   --stdout ${sample_id}_processed.fastq.gz
   """
 }
