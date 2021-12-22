@@ -19,5 +19,5 @@ workflow paired_end {
     p_trimming(reads,umitools.out)
     alignment(p_trimming.out.samples_trimmed)
     samtools(alignment.out[0])
-    p_deduplication(samtools.out)
+    p_deduplication(samtools.out.index_sorted)
    }
