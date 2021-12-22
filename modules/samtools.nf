@@ -11,7 +11,7 @@ process samtools {
     
     output:
     tuple val(sample_id), file('*.bai')
-    tuple val(sample_id), file('*.bam')
+    tuple val(sample_id), file('*index_sorted.bam')
     
     script:
     """
