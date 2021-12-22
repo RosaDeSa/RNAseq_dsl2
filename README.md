@@ -32,6 +32,9 @@ genome:
 
 single_end:
  false
+
+umi:
+ true
 ```
 
 ### Tips
