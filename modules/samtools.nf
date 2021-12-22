@@ -3,6 +3,7 @@
  */
 
 process samtools {
+echo true
     tag "Samtools"
     publishDir "${params.outdir}/samtools", mode: 'copy'
     
@@ -14,6 +15,6 @@ process samtools {
     
     script:
     """
-    samtools index ${bam} > ${sample_id}_s_index.bam
+    echo ${bam} > ${sample_id}_s_index.bam
     """
 }
