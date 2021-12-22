@@ -15,6 +15,6 @@ echo true
     
     script:
     """
-    echo ${bam} > ${sample_id}_s_index.bam
+    samtools index ${bam} > ${sample_id}_s_index.bai
     """
 }
