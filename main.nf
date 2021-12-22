@@ -28,11 +28,10 @@ reads = Channel.from( params.reads )
 
 //workflow
 workflow {
- if (params.single_end) {
-   single_end(reads)
-  } else {
-   paired_end(reads)
-  }
+ if (params.single_end) 
+  single_end(reads)
+ else 
+  paired_end(reads)
 }
 
 workflow.onComplete {
