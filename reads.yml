@@ -3,7 +3,7 @@ file:
 
 reads:
 - - CTR_KIT_S9
-  - ['/home/tigem/g.martone/umi_test/CTR_KIT_S9_R1_001.fastq.gz', '/home/tigem/g.martone/umi_test/CTR_KIT_S9_R2_001.fastq.gz ]
+  - ['/home/tigem/g.martone/umi_test/CTR_KIT_S9_R1_001.fastq.gz', '/home/tigem/g.martone/umi_test/CTR_KIT_S9_R2_001.fastq.gz' ]
 
 outdir:
  /home/tigem/g.martone/umi_test/results
