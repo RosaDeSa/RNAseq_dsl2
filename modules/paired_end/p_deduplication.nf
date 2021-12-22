@@ -1,4 +1,5 @@
 process p_deduplication {
+ echo true
  tag 'Deduplication'
  label 'deduplication'
  
@@ -10,6 +11,6 @@ process p_deduplication {
  
  script:
  """
- umi_tools dedup -I $sorted_bai --output-stats=${sample_id}_deduplicated -S ${sample_id}_deduplicated.bam
+ echo $sorted_bai
  """
 }
