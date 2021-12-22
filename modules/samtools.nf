@@ -11,6 +11,7 @@ process samtools {
     
     output:
     tuple val(sample_id), file('*.bai')
+    tuple val(sample_id), file('*.bam'), emit: index_sorted
     
     script:
     """
