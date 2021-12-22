@@ -10,7 +10,7 @@ process samtools {
     tuple val(sample_id), file(bam)
     
     output:
-    tuple val(sample_id), file('*index.bam')
+    tuple val(sample_id), file('*index.bai')
     
     script:
     """
