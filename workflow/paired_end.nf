@@ -16,4 +16,5 @@ workflow paired_end {
     p_fastqc(reads)
     umitools(reads)
     p_trimming(reads,umitools.out)
+    alignment(p_trimming.out.samples_trimmed)
    }
