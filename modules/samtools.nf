@@ -4,20 +4,17 @@
 
 process samtools {
     tag "Samtools"
-    publishDir "${params.outdir}/alignment", mode: 'copy'
+    publishDir "${params.outdir}/samtools", mode: 'copy'
     
     input:
     tuple val(sample_id), file(bam)
     
     output:
     tuple val(sample_id), file('*.bai')
-    path '*.{flagstat,idxstats,stats}'
     
     script:
     """
-    samtools index $bam > ${sample_id}.sorted.bam
-    samtools flagstat $bam > ${sample_id}.sorted.bam.flagstat
-    samtools idxstats $bam > ${sample_id}.sorted.bam.idxstats
-    samtools stats $bam > ${sample_id}.sorted.bam.stats
+    samtools sort $bam > ${sample_id}.sorted.bam
+    samtools index ${sample_id}.sorted.bam > ${sample_id}.sorted.bam
     """
 }
