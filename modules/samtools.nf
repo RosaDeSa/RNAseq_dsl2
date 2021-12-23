@@ -11,10 +11,11 @@ echo true
     tuple val(sample_id), file(bam)
     
     output:
-    tuple val(sample_id), file('*')
+    tuple val(sample_id), file('*bai')
     
     script:
     """
-    samtools index ${bam} 
+    samtools index ${bam} -o ${sample_id}_index.bai
+    cp ${bam} "${params.outdir}/samtools"
     """
 }
