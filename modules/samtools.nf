@@ -16,6 +16,5 @@ echo true
     script:
     """
     samtools index ${bam} -o ${sample_id}_index.bai
-    cp ${bam} ${params.outdir}/samtools
     """
 }
