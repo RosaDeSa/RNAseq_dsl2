@@ -11,10 +11,10 @@ echo true
     tuple val(sample_id), file(bam)
     
     output:
-    tuple val(sample_id), file('*bai')
+    tuple val(sample_id), file('*')
     
     script:
     """
-    samtools index ${bam} > ${sample_id}_s_index.bai
+    samtools index ${bam} 
     """
 }
