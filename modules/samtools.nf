@@ -16,6 +16,6 @@ echo true
     
     script:
     """
-    samtools index ${bam} > ${sample_id}_Aligned.sortedByCoord.out.bam
+    samtools index ${bam} > ${sample_id}_Aligned.sortedByCoord.out.bam.bai
     """
 }
