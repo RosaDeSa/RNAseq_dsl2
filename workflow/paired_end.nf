@@ -19,6 +19,6 @@ workflow paired_end {
     p_trimming(reads,umitools.out)
     alignment(p_trimming.out.samples_trimmed)
     samtools(alignment.out[0])
-    p_deduplication(samtools.out[0])
+    p_deduplication(alignment.out[0])
     // countTable(p_deduplication.out[0])
    }
