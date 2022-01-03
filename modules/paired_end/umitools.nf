@@ -11,8 +11,10 @@ process umitools {
   script:
   """
   umi_tools extract \
-   --stdin=${reads[0]} \
-   --bc-pattern=$params.pattern \
-   --stdout ${sample_id}_processed.fastq.gz
+   -p NNNNNNNNNNNN \
+   -I ${reads[0]} \
+   -S ${sample_id}_processed_1.fastq.gz \
+   --read2-in=${reads[1]} \
+   --read2-out=${sample_id}_processed_2.fastq.gz
   """
 }
