@@ -6,7 +6,6 @@ process samtools {
 echo true
     tag "Samtools"
     publishDir "${params.outdir}/samtools", mode: 'copy'
-    publishDir "${params.outdir}/mapped", mode: 'copy'
     
     input:
     tuple val(sample_id), file(bam)
