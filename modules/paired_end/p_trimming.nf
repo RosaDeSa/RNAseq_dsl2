@@ -15,7 +15,6 @@ process p_trimming {
         }
     
     input:
-    tuple val(sample_id), path(reads)
     tuple val(sample_id), path(processed)
 
     output:
@@ -25,8 +24,8 @@ process p_trimming {
     
     script:
     """
-    ln -s ${processed} ${sample_id}_1.fastq.gz
-    ln -s ${reads[1]} ${sample_id}_2.fastq.gz
+    ln -s ${processed[0]} ${sample_id}_1.fastq.gz
+    ln -s ${processed[1]} ${sample_id}_2.fastq.gz
     trim_galore --quality ${params.quality} --length ${params.length} --gzip --fastqc --paired ${sample_id}_1.fastq.gz ${sample_id}_2.fastq.gz
     """
 }
