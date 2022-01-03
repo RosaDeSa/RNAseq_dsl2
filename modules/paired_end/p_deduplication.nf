@@ -4,13 +4,13 @@ process p_deduplication {
  publishDir "${params.outdir}/deduplication"
  
  input:
- tuple val(sample_id), file(sorted_bai)
+ tuple val(sample_id), file(sorted)
  
  output:
- tuple val(sample_id), file(ded_bam)
+ tuple val(sample_id), file(dedu_bam)
  
  script:
  """
- umi_tools dedup -I ${sorted_bai} --output-stats=${sample_id}_deduplicated -S ${sample_id}_deduplicated.bam
+ umi_tools dedup -I ${sorted} --output-stats=${sample_id}_deduplicated -S ${sample_id}_deduplicated.bam
  """
 }
