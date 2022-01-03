@@ -14,6 +14,6 @@ process p_deduplication {
  
  script:
  """
- echo $sorted
+ umi_tools dedup -I ${sorted} --output-stats=${sample_id}_deduplicated -S ${sample_id}_deduplicated.bam
  """
 }
