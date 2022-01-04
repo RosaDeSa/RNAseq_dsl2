@@ -9,7 +9,7 @@ include { countTable } from './../modules/countTable.nf'
 include { multiqc } from './../modules/multiqc.nf'
 
 //workflow for single end analysis
-workflow umi_paired_end {
+workflow umi_single_end {
    take:
     reads
    
