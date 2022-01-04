@@ -15,6 +15,7 @@ file:
  /home/tigem/g.martone/human_dsl2/reads.yml
 
 #with reads you can specify the params reads for nextflow
+#you can add more reads following the pattern
 reads:
 - - name_of_read
   - ['absolute/path/to/read_one', 'absolute/path/to/read_two' ]
@@ -32,7 +33,8 @@ single_end:
 #and here if there are umi or not (umi = true or false)
 umi:
  true
-#if you need ad analysis with removing umi, you need to specify also the pattern for them. If not, you can also delete belowe command
+#if you need ad analysis with removing umi, you need to specify also the pattern for them. 
+#If not, you can also delete belowe command
 pattern:
  NNNNNNNNNNNN
 ```
