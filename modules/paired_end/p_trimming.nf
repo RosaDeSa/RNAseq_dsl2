@@ -2,7 +2,7 @@
  * Step 2. Trimming
  */
 
-process up_trimming {
+process p_trimming {
     tag 'Trim Galore'
     label 'trimming'
     publishDir "$params.outdir" , mode: 'copy',
