@@ -9,7 +9,7 @@ process p_deduplication {
  tuple val(sample_id), file(index)
  
  output:
- tuple val(sample_id), file(dedu_bam)
+ tuple val(sample_id), file('*deduplicated.bam'), emit: dedup_bam
  
  script:
  """
