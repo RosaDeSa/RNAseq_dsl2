@@ -1,6 +1,6 @@
 //modules required for paired end analysis
-include { p_fastqc } from './../modules/single_end/p_fastqc.nf'
-include { p_trimming } from './../modules/single_end/p_trimming.nf'
+include { p_fastqc } from './../modules/paired_end/p_fastqc.nf'
+include { p_trimming } from './../modules/paired_end/p_trimming.nf'
 include { alignment } from './../modules/alignment.nf'
 include { samtools } from './../modules/samtools.nf'
 include { countTable } from './../modules/countTable.nf'
