@@ -37,7 +37,7 @@ workflow {
   single_end(reads)
  else if (params.single_end && params.umi)
   umi_single_end(reads)
- else if (params.single_end && !params.umi)
+ else if (!params.single_end && !params.umi)
   paired_end(reads)
  else
   umi_paired_end(reads)
