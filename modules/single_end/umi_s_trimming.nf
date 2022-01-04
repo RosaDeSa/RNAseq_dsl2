@@ -24,7 +24,7 @@ process umi_s_trimming {
     
     script:
     """
-    ln -s ${processed[0]} ${sample_id}.fastq.gz
-    trim_galore --quality ${params.quality} --length ${params.length} --gzip --fastqc ${sample_id}.fastq.gz
+    ln -s ${processed[0]} ${sample_id}_processed.fastq.gz
+    trim_galore --quality ${params.quality} --length ${params.length} --gzip --fastqc ${sample_id}_processed.fastq.gz
     """
 }
