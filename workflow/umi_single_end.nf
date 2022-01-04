@@ -16,7 +16,7 @@ workflow umi_single_end {
    main:
     s_fastqc(reads)
     umitools(reads)
-    s_trimming(reads,umitools.out)
+    s_trimming(umitools.out)
     alignment(s_trimming.out.samples_trimmed)
     samtools(alignment.out[0])
     deduplication(alignment.out[0], samtools.out)
