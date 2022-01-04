@@ -1,4 +1,4 @@
-//modules required for single end analysis
+//modules required for paired end analysis with umi
 include { p_fastqc } from './../modules/paired_end/p_fastqc.nf'
 include { umitools } from './../modules/umitools.nf'
 include { p_trimming } from './../modules/paired_end/p_trimming.nf'
@@ -9,7 +9,7 @@ include { countTable } from './../modules/countTable.nf'
 include { multiqc } from './../modules/multiqc.nf'
 
 //workflow for single end analysis
-workflow paired_end {
+workflow umi_paired_end {
    take:
     reads
    
