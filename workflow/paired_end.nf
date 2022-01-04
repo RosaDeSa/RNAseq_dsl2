@@ -10,7 +10,7 @@ include { multiqc } from './../modules/multiqc.nf'
 reads = Channel.from( params.reads )
 
 //workflow
-workflow {
+workflow paired_end {
     p_fastqc(reads)
     p_trimming(reads)
     alignment(trimming.out.samples_trimmed)
