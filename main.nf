@@ -31,11 +31,11 @@ reads = Channel.from( params.reads )
 
 //workflow
 workflow {
- if (params.single_end && !umi) 
+ if (params.single_end && !params.umi) 
   single_end(reads)
- else if (params.single_end && umi)
+ else if (params.single_end && params.umi)
   umi_single_end(reads)
- else if (params.single_end && !umi)
+ else if (params.single_end && !params.umi)
   paired_end(reads)
  else
   umi_paired_end(reads)
