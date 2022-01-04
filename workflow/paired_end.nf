@@ -11,13 +11,13 @@ reads = Channel.from( params.reads )
 
 //workflow
 workflow {
-    fastqc(reads)
-    trimming(reads)
+    p_fastqc(reads)
+    p_trimming(reads)
     alignment(trimming.out.samples_trimmed)
     samtools(alignment.out[0])
     countTable(alignment.out[0])
-    multiqc(fastqc.out.collect(),
-            trimming.out[1].collect(),
+    multiqc(p_fastqc.out.collect(),
+            p_trimming.out[1].collect(),
             trimming.out[2].collect(),
             alignment.out[1].collect(),
             countTable.out[1].collect()
