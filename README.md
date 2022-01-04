@@ -13,13 +13,13 @@ Here is an example (reads.yml):
 ```bash
 #with file you can highlight the path for yml file
 file:
- /home/tigem/g.martone/human_dsl2/reads.yml
+ /absolute/path/to/reads.yml
 
 #with reads you can specify the params reads for nextflow
 #you can add more reads following the pattern
 reads:
 - - name_of_read
-  - ['absolute/path/to/read_one', 'absolute/path/to/read_two' ]
+  - ['/absolute/path/to/read_one', '/absolute/path/to/read_two' ]
 
 #here you can specify the folder in with will be stored the output
 outdir:
@@ -40,9 +40,17 @@ pattern:
  NNNNNNNNNNNN
 ```
 
-### Tips
+### Tips & Tricks
 
 When you have to create the params file, you can use absolute path or specify only folder, starting from the point that when you will use the params file input, it starts in the working directory. So you can manage data and path as in a relative mode. Remember to use absolute path if you have to set file that are in other directory, different from working directory.
+
+Remember that there is a hierarchy when you want to specify some parameters:
+- command line
+- params file
+- main.nf
+- nextflow.config
+
+So, if you wanto to run the same pipeline, without modify the yml file for nextflow, you can add parameters in command line.
 
 ## How use this repository
 
