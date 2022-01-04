@@ -19,7 +19,7 @@ workflow paired_end {
     countTable(alignment.out[0])
     multiqc(p_fastqc.out.collect(),
             p_trimming.out[1].collect(),
-            trimming.out[2].collect(),
+            p_trimming.out[2].collect(),
             alignment.out[1].collect(),
             countTable.out[1].collect()
            )
