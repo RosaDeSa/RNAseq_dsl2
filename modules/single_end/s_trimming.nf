@@ -25,6 +25,6 @@ process s_trimming {
     script:
     """
     ln -s ${reads[0]} ${sample_id}.fastq.gz
-    trim_galore --quality ${params.quality} --length ${params.length} --gzip --fastqc --paired ${sample_id}.fastq.gz
+    trim_galore --quality ${params.quality} --length ${params.length} --gzip --fastqc ${sample_id}.fastq.gz
     """
 }
