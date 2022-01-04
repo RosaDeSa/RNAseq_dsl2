@@ -2,6 +2,7 @@
 nextflow.enable.dsl=2
 
 // parmas path
+params.pattern = ""
 params.reads = ""
 params.index = ""
 params.outdir = ""
@@ -17,6 +18,8 @@ log.info """\
  index        : ${params.index}
  file         : ${params.file}
  outdir       : ${params.outdir}
+ genome       : ${params.genome}
+ gtf          : ${params.gtf}
  """
 
 //include section for workflows
@@ -28,12 +31,16 @@ reads = Channel.from( params.reads )
 
 //workflow
 workflow {
- if (params.single_end) 
+ if (params.single_end && !umi) 
   single_end(reads)
- else 
+ else if (params.single_end && umi)
+  umi_single_end(reads)
+ else if (params.single_end && !umi)
   paired_end(reads)
+ else
+  umi_paired_end(reads)
 }
 
-workflow.onComplete {
+workflow.onComplete { 
         log.info ( workflow.success ? "\nDone! Open the following report in your browser --> $params.outdir/multiqc_report.html\n" : "Oops .. something went wrong" )
 }

@@ -3,6 +3,7 @@
  */
 
 process samtools {
+echo true
     tag "Samtools"
     publishDir "${params.outdir}/samtools", mode: 'copy'
     
@@ -10,11 +11,10 @@ process samtools {
     tuple val(sample_id), file(bam)
     
     output:
-    tuple val(sample_id), file('*.bai')
+    tuple val(sample_id), file('*bai')
     
     script:
     """
-    samtools sort $bam > ${sample_id}.sorted.bam
-    samtools index ${sample_id}.sorted.bam > ${sample_id}.sorted.bam
+    samtools index ${bam} > ${sample_id}_Aligned.sortedByCoord.out.bam.bai
     """
 }
