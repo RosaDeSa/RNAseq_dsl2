@@ -22,11 +22,9 @@ workflow paired_end {
     p_deduplication(alignment.out[0], samtools.out)
     countTable(p_deduplication.out.dedup_bam)
     multiqc(p_fastqc.out,
-            umitools.out,
-            p_trimming.out,
-            alignment.out,
-            samtools.out,
-            p_deduplication.out,
-            countTable.out
+            p_trimming.out[1],
+            p_trimming.out[2],
+            alignment.out[1],
+            countTable.out[1]
             )
    }
