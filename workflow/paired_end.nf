@@ -28,4 +28,5 @@ workflow paired_end {
             samtools.out.collect(),
             p_deduplication.out.collect(),
             countTable.out.collect()
+            )
    }
