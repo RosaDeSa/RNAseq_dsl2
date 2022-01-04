@@ -16,14 +16,14 @@ workflow umi_paired_end {
    main:
     p_fastqc(reads)
     umitools(reads)
-    p_trimming(reads,umitools.out)
-    alignment(p_trimming.out.samples_trimmed)
+    umi_p_trimming(reads,umitools.out)
+    alignment(umi_p_trimming.out.samples_trimmed)
     samtools(alignment.out[0])
     deduplication(alignment.out[0], samtools.out)
     countTable(deduplication.out.dedup_bam)
     multiqc(p_fastqc.out,
-            p_trimming.out[1],
-            p_trimming.out[2],
+            umi_p_trimming.out[1],
+            umi_p_trimming.out[2],
             alignment.out[1],
             countTable.out[1]
             )
