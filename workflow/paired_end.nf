@@ -25,7 +25,7 @@ workflow paired_end {
            )
            
    emit:
-    multiqc.out[0]
+    multiqc_r = multiqc.out[0]
 }
 
 workflow.onComplete {
