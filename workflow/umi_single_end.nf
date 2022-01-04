@@ -27,4 +27,7 @@ workflow umi_single_end {
             alignment.out[1],
             countTable.out[1]
             )
+            
+   emit:
+    multiqc_r = multiqc.out[0]
    }
