@@ -1,4 +1,4 @@
-process p_deduplication {
+process deduplication {
  echo true
  tag 'Deduplication'
  label 'deduplication'
