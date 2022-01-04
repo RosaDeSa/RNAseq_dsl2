@@ -18,17 +18,10 @@ reads:
 - - day_14
   - ['/home/tigem/g.martone/human_dsl2/data/SRR1633267_1.fastq.gz', '/home/tigem/g.martone/human_dsl2/data/SRR1633267_2.fastq.gz' ]
 
-index:
- /home/tigem/g.martone/human_dsl2/index
-
 outdir:
  /home/tigem/g.martone/human_dsl2/results
-
-gtf:
- /home/tigem/g.martone/human_dsl2/genes/genes.gtf
-
-genome:
- /home/tigem/g.martone/human_dsl2/fasta/genome.fa
+ 
+#index, gtf and genome paths are stored in nextflow config file
 
 single_end:
  false
