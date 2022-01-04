@@ -29,4 +29,4 @@ workflow umi_paired_end {
             )
    emit:
     multiqc_r = multiqc.out[0]
-   }
+}
