@@ -2,7 +2,7 @@
 nextflow.enable.dsl=2
 
 // parmas path
-params.pattern = ""
+//params.pattern = ""
 params.reads = ""
 params.index = ""
 params.outdir = ""
