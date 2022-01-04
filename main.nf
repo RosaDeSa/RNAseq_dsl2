@@ -18,6 +18,8 @@ log.info """\
  index        : ${params.index}
  file         : ${params.file}
  outdir       : ${params.outdir}
+ genome       : ${params.genome}
+ gtf          : ${params.gtf}
  """
 
 //include section for workflows
