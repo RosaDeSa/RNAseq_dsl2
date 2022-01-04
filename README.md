@@ -13,10 +13,8 @@ file:
  /home/tigem/g.martone/human_dsl2/reads.yml
 
 reads:
-- - day_10
-  - ['/home/tigem/g.martone/human_dsl2/data/SRR1633256_1.fastq.gz', '/home/tigem/g.martone/human_dsl2/data/SRR1633256_2.fastq.gz' ]
-- - day_14
-  - ['/home/tigem/g.martone/human_dsl2/data/SRR1633267_1.fastq.gz', '/home/tigem/g.martone/human_dsl2/data/SRR1633267_2.fastq.gz' ]
+- - CTR_KIT_S9
+  - ['/home/tigem/g.martone/umi_test/CTR_KIT_S9_R1_001.fastq.gz', '/home/tigem/g.martone/umi_test/CTR_KIT_S9_R2_001.fastq.gz' ]
 
 outdir:
  /home/tigem/g.martone/human_dsl2/results
