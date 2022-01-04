@@ -25,6 +25,8 @@ log.info """\
 //include section for workflows
 include { single_end } from './workflow/single_end.nf'
 include { paired_end } from './workflow/paired_end.nf'
+include { umi_single_end } from './workflow/umi_single_end.nf'
+include { umi_paired_end } from './workflow/umi_paired_end.nf'
 
 //channel
 reads = Channel.from( params.reads )
