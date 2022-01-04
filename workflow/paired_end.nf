@@ -1,10 +1,10 @@
-//include section
-include { fastqc } from './modules/fastqc'
-include { trimming } from './modules/trimming'
-include { alignment } from './modules/alignment'
-include { samtools } from './modules/samtools'
-include { countTable } from './modules/countTable'
-include { multiqc } from './modules/multiqc'
+//modules required for paired end analysis
+include { p_fastqc } from './../modules/single_end/p_fastqc.nf'
+include { p_trimming } from './../modules/single_end/p_trimming.nf'
+include { alignment } from './../modules/alignment.nf'
+include { samtools } from './../modules/samtools.nf'
+include { countTable } from './../modules/countTable.nf'
+include { multiqc } from './../modules/multiqc.nf'
 
 //channel
 reads = Channel.from( params.reads )
