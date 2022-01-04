@@ -28,6 +28,9 @@ single_end:
 
 umi:
  true
+ 
+pattern:
+ NNNNNNNNNNNN
 ```
 
 ### Tips
