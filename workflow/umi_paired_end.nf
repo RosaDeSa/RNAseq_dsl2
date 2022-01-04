@@ -4,7 +4,7 @@ include { umitools } from './../modules/umitools.nf'
 include { p_trimming } from './../modules/paired_end/p_trimming.nf'
 include { alignment } from './../modules/alignment.nf'
 include { samtools } from './../modules/samtools.nf'
-include { p_deduplication } from './../modules/paired_end/p_deduplication.nf'
+include { deduplication } from './../modules/deduplication.nf'
 include { countTable } from './../modules/countTable.nf'
 include { multiqc } from './../modules/multiqc.nf'
 
@@ -19,8 +19,8 @@ workflow umi_paired_end {
     p_trimming(reads,umitools.out)
     alignment(p_trimming.out.samples_trimmed)
     samtools(alignment.out[0])
-    p_deduplication(alignment.out[0], samtools.out)
-    countTable(p_deduplication.out.dedup_bam)
+    deduplication(alignment.out[0], samtools.out)
+    countTable(deduplication.out.dedup_bam)
     multiqc(p_fastqc.out,
             p_trimming.out[1],
             p_trimming.out[2],
