@@ -27,7 +27,3 @@ workflow paired_end {
    emit:
     multiqc_r = multiqc.out[0]
 }
-
-workflow.onComplete {
-        log.info ( workflow.success ? "\nDone! Open the following report in your browser --> $params.outdir/multiqc_report.html\n" : "Oops .. something went wrong" )
-}
