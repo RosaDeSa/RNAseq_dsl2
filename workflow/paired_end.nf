@@ -6,11 +6,12 @@ include { samtools } from './../modules/samtools.nf'
 include { countTable } from './../modules/countTable.nf'
 include { multiqc } from './../modules/multiqc.nf'
 
-//channel
-reads = Channel.from( params.reads )
-
 //workflow
 workflow paired_end {
+   take:
+    reads
+    
+   main:
     p_fastqc(reads)
     p_trimming(reads)
     alignment(trimming.out.samples_trimmed)
