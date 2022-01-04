@@ -7,7 +7,7 @@ process alignment {
     publishDir "$params.outdir", mode: 'copy'
 
     input:
-    tuple val(sample_id), file(reads)
+    tuple val(sample_id), file(read)
     
     output:
     tuple val(sample_id), file('mapped/*.bam')
@@ -18,7 +18,7 @@ process alignment {
     STAR --runMode alignReads \
         --genomeDir $params.index \
         --outSAMtype BAM SortedByCoordinate \
-        --readFilesIn ${reads} \
+        --readFilesIn ${read} \
         --runThreadN 7 \
         --outFileNamePrefix mapped/${sample_id}_ \
         --outFilterMultimapNmax 1 \
