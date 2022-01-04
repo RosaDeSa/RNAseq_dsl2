@@ -21,7 +21,7 @@ workflow single_end {
     multiqc(s_fastqc.out.collect(),
             s_trimming.out[1].collect(),
             s_trimming.out[2].collect(),
-            slignment.out[1].collect(),
+            alignment.out[1].collect(),
             countTable.out[1].collect()
            )
     
