@@ -7,6 +7,7 @@ This is a simple nextflow pipeline written with DSL 2.0 to show ho to run a rnas
 If you want to replicate this analysis on your pc, you can use directly the nextflow pipeline putting it in the run command of nextflow. You have only to download che human.yml that is the configuration file for the conda envirnoment (the tool used to install different applications for the analysis). This file will be used by nextflow to build up a temporary conda environment via instructions written in nextflow config file.
 
 Next step is to write a yml regards to files that you want to analyze.
+
 Here is an example (reads.yml):
 
 ```bash
