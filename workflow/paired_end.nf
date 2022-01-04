@@ -23,6 +23,9 @@ workflow paired_end {
             alignment.out[1].collect(),
             countTable.out[1].collect()
            )
+           
+   emit:
+    multiqc.out[0]
 }
 
 workflow.onComplete {
