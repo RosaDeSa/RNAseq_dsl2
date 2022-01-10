@@ -66,16 +66,16 @@ Here you can find all parameteres that we have setted in nextflow config file or
 
 ### STAR aligner
 - in module
-- - outSAMtype SortedByCoordinate
-- - runThread 7
-- - outFilePrefix mapped
-- - outFilterMultimapNmax 1
-- - twopassMode Basic
-- - readFilesCommand zcat
+-- outSAMtype SortedByCoordinate
+-- runThread 7
+-- outFilePrefix mapped
+-- outFilterMultimapNmax 1
+-- twopassMode Basic
+-- readFilesCommand zcat
 
 - in nextflow config
-- - sjdbGTFfile path/to/our/GTF
-- - sjbdOverhang 99 (for illumina analysis)
+-- sjdbGTFfile path/to/our/GTF
+-- sjbdOverhang 99 (for illumina analysis)
 
 ---
 
