@@ -65,7 +65,7 @@ Here you can find all parameteres that we have setted in nextflow config file or
 - length = '39'
 
 ### STAR aligner
-- in module
+- in __module__
   - outSAMtype SortedByCoordinate
   - runThread 7
   - outFilePrefix mapped
@@ -73,7 +73,7 @@ Here you can find all parameteres that we have setted in nextflow config file or
   - twopassMode Basic
   - readFilesCommand zcat
 
-- in nextflow config
+- in __nextflow config__
   - sjdbGTFfile path/to/our/GTF
   - sjbdOverhang 99 (for illumina analysis)
 
