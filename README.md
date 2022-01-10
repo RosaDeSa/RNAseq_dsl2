@@ -39,8 +39,9 @@ umi:
 pattern:
  NNNNNNNNNNNN
 ```
+---
 
-### Tips & Tricks
+## Tips & Tricks
 
 When you have to create the params file, you can use absolute path or specify only folder, starting from the point that when you will use the params file input, it starts in the working directory. So you can manage data and path as in a relative mode. Remember to use absolute path if you have to set file that are in other directory, different from working directory.
 
@@ -52,13 +53,39 @@ Remember that there is a hierarchy when you want to specify some parameters:
 
 So, if you wanto to run the same pipeline, without modify the yml file for nextflow, you can add parameters in command line.
 
+---
+
+## Setting parameters
+
+Here you can find all parameteres that we have setted in nextflow config file or in the specific module. Remember the hierarchy of the input parameters and add only which you want to modify from default value in the yml file o in command line.
+
+### Trim Galore parameters
+- e = '0.1'
+- quality = '20'
+- length = '39'
+
+### STAR aligner
+- in module
+- - outSAMtype SortedByCoordinate
+- - runThread 7
+- - outFilePrefix mapped
+- - outFilterMultimapNmax 1
+- - twopassMode Basic
+- - readFilesCommand zcat
+
+- in nextflow config
+- - sjdbGTFfile path/to/our/GTF
+- - sjbdOverhang 99 (for illumina analysis)
+
+---
+
 ## How use this repository
 
 Last step is to configure the config file with your data, as your token for nextflow tower or other inputs.
 - If you have forked the repository, you can managed the forked one as your repository and make changes in it.
 - If you have not forked the repository, you have to download the config file on your local machine, make changes in it and specify it as input for nextflow pipeline.
 
-## Input in terminal
+### Input in terminal
 To run this pipeline on my machine, i used this command line
 
 ```bash
