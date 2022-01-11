@@ -7,10 +7,10 @@ This is a simple nextflow pipeline written with DSL 2.0 to show ho to run a rnas
 
 ## What do you need
 This is a list of file to remember you what are necessary to run this pipeline:
-- file.yml (reads.yml) as -params-file for nextflow
+- file.yml (reads.yml) as parameters file for nextflow
 - file.yml (human.yml) as configuration for conda environment
 - file.conf (star_setting.conf) as input parameters for STAR aligner
-- file.config (nextflow.config) as configuration file for nextflow.
+- file.config (nextflow.config) as configuration file for nextflow
 
 ---
 
