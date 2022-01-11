@@ -1,7 +1,7 @@
 # Human analysis
 
 ## Intro
-This is a simple nextflow pipeline written with DSL 2.0 to show ho to run a rnaseq on slurm with a shared pipeline by github.
+This is a simple nextflow pipeline written with DSL 2.0 to show ho to run a rnaseq on slurm with a shared pipeline via github.
 
 ---
 
