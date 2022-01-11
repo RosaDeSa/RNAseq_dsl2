@@ -74,7 +74,6 @@ STAR has a separeted file in wich you can specify each parameters for the alignm
 
 An example of parameters used are:
 ```bash
-runMode alignReads
 outSAMtype BAM SortedByCoordinate
 runThreadN 7 
 outFilterMultimapNmax 1
