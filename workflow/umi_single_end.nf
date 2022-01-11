@@ -12,12 +12,13 @@ include { multiqc } from './../modules/multiqc.nf'
 workflow umi_single_end {
    take:
     reads
+    starconf
    
    main:
     s_fastqc(reads)
     umitools(reads)
     umi_s_trimming(umitools.out)
-    alignment(umi_s_trimming.out.samples_trimmed)
+    alignment(umi_s_trimming.out.samples_trimmed,starconf)
     samtools(alignment.out[0])
     deduplication(alignment.out[0], samtools.out)
     countTable(deduplication.out.dedup_bam)
