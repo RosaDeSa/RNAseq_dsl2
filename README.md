@@ -38,7 +38,12 @@ umi:
 #If not, you can also delete belowe command
 pattern:
  NNNNNNNNNNNN
+
+#the configuration file for STAR parameters
+starconf:
+ /home/tigem/g.martone/projects/human_single_end/star_settings.conf
 ```
+
 ---
 
 ## Tips & Tricks
@@ -65,17 +70,17 @@ Here you can find all parameteres that we have setted in nextflow config file or
 - length = '39'
 
 ### STAR aligner
-- in __module__
-  - outSAMtype SortedByCoordinate
-  - runThread 7
-  - outFilePrefix mapped
-  - outFilterMultimapNmax 1
-  - twopassMode Basic
-  - readFilesCommand zcat
+STAR has a separeted file in wich you can specify each parameters for the alignment. In the module aligment.nf are expressed some parameters because they are these one are strictly connected with nextflow, they are part of the workflow and must are not be touched. So, for star you have to create a file like __star_settings.conf__ (loaded on this repository) in wich you can specify all parameters for the specific function of STAR. Next, you can set the path of this file in the yml file of nextflow and it will be loaded as well as other files.
 
-- in __nextflow config__
-  - sjdbGTFfile path/to/our/GTF
-  - sjbdOverhang 99 (for illumina analysis)
+An example of parameters used are:
+```bash
+runMode alignReads
+outSAMtype BAM SortedByCoordinate
+runThreadN 7 
+outFilterMultimapNmax 1
+twopassMode Basic
+readFilesCommand zcat
+```
 
 ---
 
