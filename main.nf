@@ -30,17 +30,18 @@ include { umi_paired_end } from './workflow/umi_paired_end.nf'
 
 //channel
 reads = Channel.from( params.reads )
+starconf = Channel.fromPath( params.starconf )
 
 //workflow
 workflow {
  if (params.single_end && !params.umi) 
-  single_end(reads)
+  single_end(reads,starconf)
  else if (params.single_end && params.umi)
-  umi_single_end(reads)
+  umi_single_end(reads,starconf)
  else if (!params.single_end && !params.umi)
-  paired_end(reads)
+  paired_end(reads,starconf)
  else
-  umi_paired_end(reads)
+  umi_paired_end(reads,starconf)
 }
 
 workflow.onComplete { 
