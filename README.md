@@ -12,7 +12,7 @@ This is a list of file to remember you what are necessary to run this pipeline:
 - file.conf (star_setting.conf) as input parameters for STAR aligner
 - file.config (nextflow.config) as configuration file for nextflow.
 
---
+---
 
 ## What to do
 If you want to replicate this analysis on your pc, you can use directly the nextflow pipeline putting it in the run command of nextflow. You have only to download che human.yml that is the configuration file for the conda envirnoment (the tool used to install different applications for the analysis). This file will be used by nextflow to build up a temporary conda environment via instructions written in nextflow config file.
