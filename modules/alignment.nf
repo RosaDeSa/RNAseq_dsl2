@@ -8,6 +8,7 @@ process alignment {
 
     input:
     tuple val(sample_id), file(read)
+    file(conf)
     
     output:
     tuple val(sample_id), file('mapped/*.bam')
@@ -15,14 +16,9 @@ process alignment {
     
     script:
     """
-    STAR --runMode alignReads \
-        --genomeDir $params.index \
-        --outSAMtype BAM SortedByCoordinate \
-        --readFilesIn ${read} \
-        --runThreadN 7 \
-        --outFileNamePrefix mapped/${sample_id}_ \
-        --outFilterMultimapNmax 1 \
-        --twopassMode Basic \
-        --readFilesCommand zcat 
+    STAR --parametersFiles $conf \
+         --genomeDir $params.index \
+         --readFilesIn ${read} \
+         --outFileNamePrefix mapped/${sample_id}_
     """
 }
