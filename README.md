@@ -52,7 +52,7 @@ pattern:
 
 #the configuration file for STAR parameters
 starconf:
- /home/tigem/g.martone/projects/human_single_end/star_settings.conf
+ /absolute/path/to/star_settings.conf
 ```
 
 ---
