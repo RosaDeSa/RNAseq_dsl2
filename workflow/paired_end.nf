@@ -10,11 +10,12 @@ include { multiqc } from './../modules/multiqc.nf'
 workflow paired_end {
    take:
     reads
+    starconf
     
    main:
     p_fastqc(reads)
     p_trimming(reads)
-    alignment(p_trimming.out.samples_trimmed)
+    alignment(p_trimming.out.samples_trimmed,starconf)
     samtools(alignment.out[0])
     countTable(alignment.out[0])
     multiqc(p_fastqc.out.collect(),
