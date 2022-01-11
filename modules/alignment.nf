@@ -17,6 +17,7 @@ process alignment {
     script:
     """
     STAR --parametersFiles $conf \
+         --runMode alignReads \
          --genomeDir $params.index \
          --readFilesIn ${read} \
          --outFileNamePrefix mapped/${sample_id}_
