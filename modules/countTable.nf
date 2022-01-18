@@ -16,6 +16,6 @@ process countTable {
     
     script:
     """
-    featureCounts -t exon -a $params.gtf -o ${sample_id}.count.out -T 8 ${bam}
+    featureCounts -t exon -a $params.gtf -o ${sample_id}.count.out -g gene_id -T 8 ${bam}
     """
 }
