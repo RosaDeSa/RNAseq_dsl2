@@ -16,19 +16,4 @@ workflow umi_single_end {
    
    main:
     s_fastqc(reads)
-    umitools(reads)
-    umi_s_trimming(umitools.out)
-    alignment(umi_s_trimming.out.samples_trimmed,starconf)
-    samtools(alignment.out[0])
-    deduplication(alignment.out[0],samtools.out)
-    countTable(deduplication.out.dedup_bam)
-    multiqc(s_fastqc.out,
-            umi_s_trimming.out[1],
-            umi_s_trimming.out[2],
-            alignment.out[1],
-            countTable.out[1]
-            )
-            
-   emit:
-    multiqc_r = multiqc.out[0]
 }
