@@ -8,7 +8,7 @@ process alignment {
 
     input:
     tuple val(sample_id), file(read)
-    file(conf)
+    path(conf)
     
     output:
     tuple val(sample_id), file('mapped/*.bam')
