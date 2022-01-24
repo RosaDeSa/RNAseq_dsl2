@@ -17,4 +17,5 @@ workflow umi_single_end {
    main:
     s_fastqc(reads)
     umitools(reads)
+    umi_s_trimming(umitools.out)
 }
