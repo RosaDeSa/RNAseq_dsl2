@@ -16,4 +16,5 @@ workflow umi_single_end {
    
    main:
     s_fastqc(reads)
+    umitools(reads)
 }
