@@ -1,5 +1,4 @@
 process deduplication {
- echo true
  tag 'Deduplication'
  label 'deduplication'
  publishDir "${params.outdir}/deduplication"
