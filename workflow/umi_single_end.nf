@@ -18,4 +18,5 @@ workflow umi_single_end {
     s_fastqc(reads)
     umitools(reads)
     umi_s_trimming(umitools.out)
+    alignment(umi_s_trimming.out.samples_trimmed,starconf)
 }
