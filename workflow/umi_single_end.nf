@@ -21,4 +21,5 @@ workflow umi_single_end {
     alignment(umi_s_trimming.out.samples_trimmed,starconf)
     samtools(alignment.out[0])
     deduplication(alignment.out[0],samtools.out)
+    countTable(deduplication.out.dedup_bam)
 }
