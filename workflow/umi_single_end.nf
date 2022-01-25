@@ -19,4 +19,5 @@ workflow umi_single_end {
     umitools(reads)
     umi_s_trimming(umitools.out)
     alignment(umi_s_trimming.out.samples_trimmed,starconf)
+    samtools(alignment.out[0])
 }
