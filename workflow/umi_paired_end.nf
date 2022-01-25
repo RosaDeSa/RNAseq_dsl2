@@ -20,7 +20,7 @@ workflow umi_paired_end {
     umi_p_trimming(reads,umitools.out)
     alignment(umi_p_trimming.out.samples_trimmed,starconf)
     samtools(alignment.out[0])
-    deduplication(alignment.out[0], samtools.out)
+    deduplication(alignment.out[0],samtools.out)
     countTable(deduplication.out.dedup_bam)
     multiqc(p_fastqc.out,
             umi_p_trimming.out[1],
