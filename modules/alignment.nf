@@ -7,7 +7,7 @@ process alignment {
     publishDir "$params.outdir", mode: 'copy'
 
     input:
-    tuple val(sample_id), file(read)
+    tuple val(sample_id), path(read)
     
     output:
     tuple val(sample_id), file('mapped/*.bam')
