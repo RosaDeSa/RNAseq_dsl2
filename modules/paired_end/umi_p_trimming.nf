@@ -3,7 +3,6 @@
  */
 
 process umi_p_trimming {
-    echo true
     tag 'Trim Galore'
     label 'trimming'
     publishDir "$params.outdir" , mode: 'copy',
@@ -18,10 +17,15 @@ process umi_p_trimming {
     input:
     tuple val(sample_id), file(processed), path(reads)
     
+    output:
+    tuple val(sample_id), path('*.fq.gz'), emit: samples_trimmed
+    file '*_fastqc.{zip,html}'
+    file '*.txt'
+    
     script:
     """
-    echo ln -s ${processed} ${sample_id}_1.fastq.gz
-    echo ln -s ${reads[1]} ${sample_id}_2.fastq.gz
-    echo trim_galore --quality ${params.quality} --length ${params.length} --gzip --fastqc --paired ${sample_id}_1.fastq.gz ${sample_id}_2.fastq.gz
+    ln -s ${processed} ${sample_id}_1.fastq.gz
+    ln -s ${reads[1]} ${sample_id}_2.fastq.gz
+    trim_galore --quality ${params.quality} --length ${params.length} --gzip --fastqc --paired ${sample_id}_1.fastq.gz ${sample_id}_2.fastq.gz
     """
 }
