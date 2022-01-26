@@ -17,11 +17,6 @@ process umi_p_trimming {
     
     input:
     tuple val(sample_id), file(processed), path(reads)
-
-    output:
-    tuple val(sample_id), path('*.fq.gz'), emit: samples_trimmed
-    file '*_fastqc.{zip,html}'
-    file '*.txt'
     
     script:
     """
