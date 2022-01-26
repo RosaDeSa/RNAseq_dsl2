@@ -26,7 +26,7 @@ process umi_p_trimming {
     script:
     """
     ln -s ${processed} ${sample_id}_1.fastq.gz
-    ln -s ${reads[1]} ${sample_id}_2.fastq.gz
+    ln -s ${sample_id}_R2_001.fastq.gz ${sample_id}_2.fastq.gz
     trim_galore --quality ${params.quality} --length ${params.length} --gzip --fastqc --paired ${sample_id}_1.fastq.gz ${sample_id}_2.fastq.gz
     """
 }
