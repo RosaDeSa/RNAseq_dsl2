@@ -16,5 +16,5 @@ workflow umi_paired_end {
    
    main:
     p_fastqc(reads)
-   
+    umitools(reads)
 }
