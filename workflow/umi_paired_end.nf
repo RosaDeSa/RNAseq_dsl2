@@ -16,7 +16,5 @@ workflow umi_paired_end {
    
    main:
     p_fastqc(reads)
-            
-   emit:
-    multiqc_r = multiqc.out[0]
+   
 }
