@@ -17,4 +17,5 @@ workflow umi_paired_end {
    main:
     p_fastqc(reads)
     umitools(reads)
+    umi_p_trimming(reads,umitools.out)
 }
