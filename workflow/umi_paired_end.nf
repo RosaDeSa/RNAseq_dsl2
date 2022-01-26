@@ -15,7 +15,7 @@ workflow umi_paired_end {
     starconf
    
    main:
-    p_fastqc(reads)
-    umitools(reads)
-    umi_p_trimming(reads,umitools.out)
+    p_fastqc(reads.collect())
+    umitools(reads.collect())
+    umi_p_trimming(reads.collect(),umitools.out.collect())
 }
