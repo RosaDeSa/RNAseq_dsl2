@@ -8,7 +8,6 @@ process alignment {
 
     input:
     tuple val(sample_id), file(read)
-    file(conf)
     
     output:
     tuple val(sample_id), file('mapped/*.bam')
@@ -16,7 +15,7 @@ process alignment {
     
     script:
     """
-    STAR --parametersFiles $conf \
+    STAR --parametersFiles ${params.starconf} \
          --runMode alignReads \
          --genomeDir $params.index \
          --readFilesIn ${read} \
