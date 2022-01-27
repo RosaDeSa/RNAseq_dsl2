@@ -20,4 +20,5 @@ workflow umi_paired_end {
     umi_out = umitools.out.join(reads)
     umi_p_trimming(umi_out)
     alignment(umi_p_trimming.out.samples_trimmed)
+    samtools(alignment.out[0])
 }
