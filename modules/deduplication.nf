@@ -4,8 +4,8 @@ process deduplication {
  publishDir "${params.outdir}/deduplication"
  
  input:
- tuple val(sample_id), file(sorted)
- tuple val(sample_id), file(index)
+ tuple val(sample_id), path(sorted)
+ tuple val(sample_id), path(index)
  
  output:
  tuple val(sample_id), file('*deduplicated.bam'), emit: dedup_bam
