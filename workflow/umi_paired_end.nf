@@ -23,4 +23,5 @@ workflow umi_paired_end {
     samtools(alignment.out[0])
     for_dedup = samtools.out.join(alignment.out[0])
     deduplication(for_dedup)
+    countTable(deduplication.out.dedup_bam)
 }
