@@ -21,5 +21,5 @@ workflow umi_paired_end {
     umi_p_trimming(umi_out)
     alignment(umi_p_trimming.out.samples_trimmed)
     samtools(alignment.out[0])
-    deduplication(samtools.out)
+    deduplication(alignment.out[0],samtools.out)
 }
