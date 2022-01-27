@@ -20,6 +20,7 @@ log.info """\
  outdir       : ${params.outdir}
  genome       : ${params.genome}
  gtf          : ${params.gtf}
+ starconf     : ${params.starconf}
  """
 
 //include section for workflows
@@ -30,7 +31,6 @@ include { umi_paired_end } from './workflow/umi_paired_end.nf'
 
 //channel
 reads = Channel.from( params.reads )
-starconf = Channel.fromPath( params.starconf )
 
 //workflow
 workflow {
