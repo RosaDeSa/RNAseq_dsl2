@@ -24,12 +24,13 @@ workflow umi_paired_end {
     for_dedup = samtools.out.join(alignment.out[0])
     deduplication(for_dedup)
     countTable(deduplication.out.dedup_bam)
-    multiqc(p_fastqc.out,
-            umi_p_trimming.out[1],
-            umi_p_trimming.out[2],
-            alignment.out[1],
-            countTable.out[1]
+    multiqc(p_fastqc.out.collect(),
+            umi_p_trimming.out[1].collect(),
+            umi_p_trimming.out[2].collect(),
+            alignment.out[1].collect(),
+            countTable.out[1].collect()
             )
+
    emit:
     multiqc_r = multiqc.out[0]
 }
