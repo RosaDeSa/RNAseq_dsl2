@@ -10,6 +10,7 @@ params.multiqc = ""
 params.file = ""
 params.gtf = ""
 params.genome = ""
+params.starconf = ""
 
 //log info
 log.info """\
