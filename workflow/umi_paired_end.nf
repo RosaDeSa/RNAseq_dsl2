@@ -7,6 +7,7 @@ include { samtools } from './../modules/samtools.nf'
 include { deduplication } from './../modules/deduplication.nf'
 include { countTable } from './../modules/countTable.nf'
 include { multiqc } from './../modules/multiqc.nf'
+include { foo } from './modules/foo.nf'
 
 //workflow for single end analysis
 workflow umi_paired_end {
