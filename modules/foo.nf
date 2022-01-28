@@ -7,10 +7,16 @@ process foo {
  
  #install pacman
  if (!require("pacman", quietly = TRUE))
-  install.packages("pacman") 
+  install.packages("pacman")
+  
+ if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
  
  #load with pacman package
- pacman::p_load(tidyverse, BiocGenerics, rtracklayer) 
+ pacman::p_load(tidyverse) 
+ 
+ #load with BiocManager
+ BiocManager::install(c("rtracklayer", "BiocGenerics"))
  
  #define load gtf function
  #Function annotation takes in input GTF file (using rtracklater)
