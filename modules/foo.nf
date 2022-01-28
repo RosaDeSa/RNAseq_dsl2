@@ -8,7 +8,8 @@ process foo {
  #install pacman
  if (!require("pacman", quietly = TRUE))
   install.packages("pacman")
-  
+ 
+ #instll BiocManager
  if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
  
