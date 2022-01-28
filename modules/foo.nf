@@ -1,11 +1,9 @@
 process foo {
  echo true
-  
- input:
- file(multiqc)
  
  script:
  """
- echo --multiqc $multiqc
+ #!/usr/bin/env Rscript
+ print(paste("GTf is here:", $params.gtf
  """
  }
