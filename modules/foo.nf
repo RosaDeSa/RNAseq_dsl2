@@ -4,6 +4,17 @@ process foo {
  script:
  """
  #!/usr/bin/env Rscript
- print(paste("GTf is here:", $params.gtf))
+ load_annotation <- function(fname) {
+ #Function annotation takes in input GTF file (using rtracklater)
+ #and selects gene_id and gene_name from column 9 
+   fname |> 
+     rtracklayer::import() |> 
+     BiocGenerics::as.data.frame() |> 
+     dplyr::select(gene_id, gene_name) |> 
+     dplyr::distinct()
+ }
+
+ annotation <- load_annotation(gtf)
+ cat('GTF Loaded')
  """
  }
