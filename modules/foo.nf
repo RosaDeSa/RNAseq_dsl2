@@ -31,7 +31,7 @@ process foo {
  }
  
  #load gtf
- annotation <- load_annotation(gtf)
+ annotation <- load_annotation($params.gtf)
  
  #done
  cat('GTF Loaded')
