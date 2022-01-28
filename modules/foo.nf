@@ -4,6 +4,6 @@ process foo {
  script:
  """
  #!/usr/bin/env Rscript
- print(paste("GTf is here:", $params.gtf
+ print(paste("GTf is here:", $params.gtf))
  """
  }
