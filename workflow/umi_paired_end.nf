@@ -7,7 +7,7 @@ include { samtools } from './../modules/samtools.nf'
 include { deduplication } from './../modules/deduplication.nf'
 include { countTable } from './../modules/countTable.nf'
 include { multiqc } from './../modules/multiqc.nf'
-include { foo } from './modules/foo.nf'
+include { foo } from './../modules/foo.nf'
 
 //workflow for single end analysis
 workflow umi_paired_end {
@@ -31,6 +31,7 @@ workflow umi_paired_end {
             alignment.out[1].collect(),
             countTable.out[1].collect()
             )
+    foo()
 
    emit:
     multiqc_r = multiqc.out[0]
